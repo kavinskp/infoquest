@@ -1,0 +1,49 @@
+{% extends "Registrations/header.html" %}
+
+
+{% block title %}GCT | Login{% endblock %}
+
+{% block content %}
+
+    <div class="login">
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form method="post">
+              <h1>Login Form</h1>
+              {% csrf_token %}
+                    <div>
+                        <input class="form-control" maxlength="256" name="email" type="text" placeholder="Email" required />
+                    </div>
+
+                    <div>
+                        <input class="form-control" name="password" type="password" placeholder="Password" required />
+                    </div>
+              <div>
+                <button type="submit" class="btn btn-success"  name="login" value="login">Log in</button>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  {% load static %}
+                    <a href={% url 'homelogout' %}><img id="logo" src="{% static "img/gctb.png" %}" width="40" height="48" alt="gct image"/></a>
+                    <a href={% url 'homelogout' %}><span><h1 id="logotitle"> ULTRONS PORTAL </h1></span></a>
+                  <p>©2017 All Rights Reserved. GCT ULTRONS INFOQUEST - a project by Gctians!</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

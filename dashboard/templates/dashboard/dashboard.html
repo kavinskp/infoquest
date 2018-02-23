@@ -1,0 +1,52 @@
+{% extends "dashboard/dashboard_content.html" %}
+
+{% block rightPane %}
+
+
+    {% if logged_first %}
+
+        {% if request.session.last_visit == 'welcome' %}
+            <div role="alert" class="alert alert-success alert-dismissible fade in" align="center">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span
+                        aria-hidden="true">×</span>
+                </button>
+                <h4> Welcome to the Website </h4>
+            </div>
+        {% else %}
+            <div role="alert" class="alert alert-success alert-dismissible fade in" align="center">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span
+                        aria-hidden="true">×</span>
+                </button>
+                <h4>You have lastly logged in, <strong class="blink">{{ request.session.last_visit }}</strong></h4>
+            </div>
+        {% endif %}
+
+    {% endif %}
+
+
+
+    <style type="text/css">
+        .blink {
+            animation-duration: 1s;
+            animation-name: blink;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes blink {
+            0% {
+                color: #0c1fef;
+            }
+            50% {
+                color: #1bffd3;
+            }
+            75% {
+                color: #e08218;
+            }
+            100% {
+                color: #088005;
+            }
+        }
+    </style>
+{% endblock %}

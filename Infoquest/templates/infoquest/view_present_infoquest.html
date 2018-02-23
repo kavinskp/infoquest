@@ -1,0 +1,221 @@
+{% extends 'dashboard/dashboard_content.html' %}
+
+{% block title %}
+    Available Students
+{% endblock %}
+
+{% block rightPane %}
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-list"></i>
+                Student Present for InfoQuest
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="x_content">
+                    {% if total %}
+                        <div class="col-md-6 col-md-offset-3">
+                            <table class="table table-bordered" align="center">
+                                <tr>
+                                    <th align="center">List</th>
+                                    <th align="center">Total</th>
+                                    <th align="center">Boys</th>
+                                    <th align="center">Girls</th>
+                                </tr>
+                                <tr>
+                                    <td>Total Registration</td>
+                                    <td align="center"><strong>{{ total }}</strong></td>
+                                    <td align="center">{{ boys }}</td>
+                                    <td align="center">{{ girls }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Ppt Registrations</td>
+                                    <td align="center"><strong>{{ ppt_students }}</strong></td>
+                                    <td align="center">{{ ppt_students_boys }}</td>
+                                    <td align="center">{{ ppt_students_girls }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Event Registrations</td>
+                                    <td align="center"><strong>{{ event_students }}</strong></td>
+                                    <td align="center">{{ event_students_boys }}</td>
+                                    <td align="center">{{ event_students_girls }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Event and Ppt Registrations</td>
+                                    <td align="center"><strong>{{ pptevent_students }}</strong></td>
+                                    <td align="center">{{ pptevent_students_boys }}</td>
+                                    <td align="center">{{ pptevent_students_girls }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Accommodation</td>
+                                    <td align="center"><strong>{{ accommodation }}</strong></td>
+                                    <td align="center">{{ accommodation_boys }}</td>
+                                    <td align="center">{{ accommodation_girls }}</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    {% endif %}
+                    <br>
+                    <div class="table-responsive col-md-12">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>For</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>College</th>
+                                <th>Year</th>
+                                <th>Phone</th>
+                                <th>Acc.</th>
+                                <th>Time</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for student in list_of_students %}
+                                <tr>
+                                    <td align="center">{{ forloop.counter }}</td>
+                                    <td align="center"><strong>{{ student.id_number }}</strong></td>
+                                    <td>{{ student.name }}&nbsp;({{ student.gender }})</td>
+                                    {% if student.registration_type == 'E' %}
+                                        <td align="center"
+                                            style="color: #1d0dff">{{ student.registration_type }}</td>
+                                    {% elif student.registration_type == 'B' %}
+                                        <td align="center"
+                                            style="color: #79080f">{{ student.registration_type }}</td>
+                                    {% elif student.registration_type == 'P' %}
+                                        <td align="center">{{ student.registration_type }}</td>
+                                    {% else %}
+                                        <td align="center"
+                                            style="  color: #ff0e09">{{ student.registration_type }}</td>
+                                    {% endif %}
+                                    <td>{{ student.email }}</td>
+                                    <td>{{ student.department }}</td>
+                                    <td>{{ student.college }} ({{ student.location }})</td>
+                                    <td align="center">
+                                        {% if student.year_of_study == '1' %}
+                                            I
+                                        {% endif %}
+                                        {% if student.year_of_study == '2' %}
+                                            II
+                                        {% endif %}
+                                        {% if student.year_of_study == '3' %}
+                                            III
+                                        {% endif %}
+                                        {% if student.year_of_study == '4' %}
+                                            IV
+                                        {% endif %}
+                                    </td>
+                                    <td align="center">{{ student.phone_number }}</td>
+                                    <td align="center">
+                                        {% if student.accommodation %}
+                                            <i class="fa fa-check"></i>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {{ student.entry_time|time }}
+                                    </td>
+                                    <td><input class="btn1-sm btn-deep-orange" type="button" data-toggle="modal"
+                                               data-target="#myModal"
+                                               name="absent" id="{{ student.id }}"
+                                               value="Absent"></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal" id="myModal" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel1" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel1">Remove Confirmation</h4>
+                                </div>
+                                <div class="modal-body" id="modal_body">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn1 btn1-secondary" data-dismiss="modal">Close
+                                    </button>
+                                    <button name="mark_absent" type="button" class="btn1 btn1-danger">Confirm Absent
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="dummy_form" method="POST">
+        {% csrf_token %}
+    </form>
+
+    <script type="text/javascript">
+
+        {% if absent_student %}
+            $(function () {
+                new PNotify({
+                    title: 'Success!',
+                    text: '{{ absent_student }} is marked absent',
+                    type: 'success',
+                    styling: 'bootstrap3',
+                    min_height: "20px",
+                    mobile: {'styling': true}
+                });
+            });
+        {% endif %}
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        $('document').ready(function () {
+            $('[name="absent"]').click(function () {
+                document.getElementById('modal_body').innerHTML = '<ul><li><h4>Are you sure to mark absent for <strong>' +
+                    $(this).closest('tr').find('td:eq(1)').text() + '</strong></h4></li></ul>';
+                var $hiddenInput = $('<input/>', {type: 'hidden', value: this.id, name: 'absent_student'});
+                $hiddenInput.appendTo('#dummy_form');
+            });
+        });
+
+        $('document').ready(function () {
+            $('[name="mark_absent"]').click(function () {
+
+                var $hiddenInput = $('<input/>', {
+                    type: 'hidden',
+                    value: getCookie('csrftoken'),
+                    name: 'csrfmiddlewaretoken'
+                });
+                $hiddenInput.appendTo('#dummy_form');
+
+                $('#dummy_form').submit();
+
+            });
+        });
+    </script>
+
+{% endblock %}

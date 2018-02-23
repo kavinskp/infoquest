@@ -1,0 +1,89 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    {% load static %}
+    <div class="agileinfo-main about-top">
+        <div class="banner">
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <!-- navigation start here -->
+        <div class="top-nav">
+			<span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li><a href="{% url 'iq' %}"><i aria-hidden="true"
+                                                class="glyphicon glyphicon-home"></i><span>Home</span></a></li>
+                <li><a><i class="glyphicon glyphicon-user"></i><span>Register</span></a>
+                </li>
+                <li><a href="{% url 'iq_events' %}"><i class="glyphicon glyphicon-education"></i><span>Events</span></a>
+                </li>
+                <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
+                </li>
+                <li><a href="{% url 'iq_contact' %}"><i
+                        class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.w3l").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- //script-for-menu -->
+        </div>
+    </div>
+
+    <div class="single" style="background-color: #bdd8de">
+        <div class="container">
+            <div class="wthree_single_grid" style="margin: 10px">
+                <h2 style="font-size: 2.4em">Brain Digger</h2>
+                <p style='font-size: 20px;color: #333333'>
+                    Cash prize will be Awarded
+                </p><br>
+                <h3 style="font-size: 2.4em">Round 1 - Open timings on 27th March <span style="color: #007b70">(Duration - 40 mins)</span>
+                </h3><br>
+                <h3 style="font-size: 2.4em">Round 2 - 28th March for shortlisted candidates</h3><br><br>
+                <p style='font-size: 20px;color: #333333'>
+                    Assess your cognition in the crux subjects of COMPUTER SCIENCE which includes
+                </p>
+                <ol style="font-size: 1.3em;">
+                    <br>
+                    <li>DATA STRUCTURES</li>
+                    <li>DATABASE MANAGEMENT</li>
+                    <li>OPERATING SYSTEM</li>
+                    <li>JAVA</li>
+                    <li>COMPUTER NETWORKING.</li>
+                </ol>
+            </div>
+            <div class="wthree_single_grid1" style="margin: 40px">
+                <h2 style="font-size: 2em">Rules and Regulations</h2>
+                <br>
+                <h3>Round 1</h3>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>It will be conducted on the first day (27/03/2017).</li>
+                    <li>Open to all participants(open timing).</li>
+                    <li>Contains 40 MCQ such that 8 MCQ in each subject.</li>
+                    <li>Duration: 45 minutes</li>
+                    <li>Shortlisted participants will be notified for the next round.</li>
+                </ul>
+                <br>
+                <br>
+                <h3>Round 2</h3>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>It will be conducted on the second day (28/03/2017).</li>
+                    <li>Only shortlisted students can participate.</li>
+                    <li>Face to face technical evaluation.</li>
+                </ul>
+                <br>
+                <b>Note:</b> Only event coordinators make final judgement, and there will not be any changes.
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

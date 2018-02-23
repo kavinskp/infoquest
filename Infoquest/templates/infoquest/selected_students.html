@@ -1,0 +1,248 @@
+{% extends 'dashboard/dashboard_content.html' %}
+
+{% block title %}
+    Shortlist Students
+{% endblock %}
+
+{% block head_block %}
+    {% load static %}
+    {% include 'selectpicker.html' %}
+
+{#    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>#}
+{##}
+{#    <!-- Latest compiled and minified CSS -->#}
+{#    <link rel="stylesheet"#}
+{#          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">#}
+{##}
+{#    <!-- Latest compiled and minified JavaScript -->#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>#}
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/i18n/defaults-*.min.js"></script>#}
+
+{% endblock %}
+
+{% block rightPane %}
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-plus-circle"></i>
+                Shortlist Students
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <ul class="nav nav-tabs bar_tabs">
+                    {% for event in events_list %}
+                        {% if forloop.counter == 1 %}
+                            <li {% if selected_event == event.id %}class="active" {% else %}
+                                class="" {% endif %}>
+                                <a aria-expanded="true"
+                                   id={{ event.id }}
+                                           data-toggle="tab" name="select_tab">
+                                    {{ event.event_name }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li {% if selected_event == event.id %}class="active" {% else %}
+                                class="" {% endif %}>
+                                <a aria-expanded="false"
+                                   id={{ event.id }}
+                                           data-toggle="tab" name="select_tab">
+                                    {{ event.event_name }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                <ul class="nav nav-tabs bar_tabs">
+                    {% for round in rounds %}
+                        {% if forloop.counter == 1 %}
+                            <li {% if selected_round == round %} class="active" {% else %}
+                                                                 class="" {% endif %}>
+                                <a aria-expanded="true"
+                                   id="r{{ round }}"
+                                   data-toggle="tab" name="round_tab">
+                                    ROUND {{ round }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li {% if selected_round == round %} class="active" {% else %}
+                                                                 class="" {% endif %}>
+                                <a aria-expanded="false"
+                                   id="r{{ round }}"
+                                   data-toggle="tab" name="round_tab">
+                                    ROUND {{ round }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                <div class="x_content">
+                    <form method="POST">{% csrf_token %}
+                        <input type="hidden" name="selected_event" value="{{ selected_event }}">
+                        <input type="hidden" name="selected_round" value="{{ selected_round }}">
+                        <div class="">
+                            <div class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Email
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select class="selectpicker" name="email" data-width="400px"
+                                                data-live-search="true"
+                                                title="Select shortlisted candidate"
+                                                required>
+                                            {% for student in list_of_students %}
+                                                <option value="{{ student.id }}"
+                                                        data-subtext="{{ student.name }}">{{ student.id_number }} - {{ student.email }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <button type="submit" name="add" class="btn1 btn-purple">Add Student
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form method="POST">{% csrf_token %}
+                        <input type="hidden" name="revoke_event" value="{{ selected_event }}">
+                        <input type="hidden" name="revoke_round" value="{{ selected_round }}">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>S. No.</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Dept</th>
+                                    <th>College</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                </tr>
+                                </thead>
+                                <tbody id="content">
+                                {% for student in shortlisted_students %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td><strong>{{ student.student.id_number }}</strong></td>
+                                        <td>{{ student.student.name }}</td>
+                                        <td>{{ student.student.department }}</td>
+                                        <td>{{ student.student.college }}</td>
+                                        <td>{{ student.student.email }} ({{ student.student.location }})</td>
+                                        <td>{{ student.student.phone_number }}</td>
+                                        <td><input class="btn1-sm btn-deep-orange" type="button" data-toggle="modal"
+                                                   data-target="#myModal{{ forloop.counter }}" value="Revoke"></td>
+                                    </tr>
+
+                                    <div class="modal" id="myModal{{ forloop.counter }}" tabindex="-1" role="dialog"
+                                         aria-labelledby="myModalLabel1" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel1">Delete Confirmation</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>Are sure revoke <strong>{{ student.student.name }}</strong> ?</h4>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn1 btn1-secondary"
+                                                            data-dismiss="modal">Close
+                                                    </button>
+                                                    <button type="submit" class="btn1 btn1-danger"
+                                                            name="{{ student.id }}" value="Revoke">Confirm Revoke
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="dummy_form" method="post">
+        {% csrf_token %}
+    </form>
+
+    <script type="text/javascript">
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        $('document').ready(function () {
+            $('[name="select_tab"]').click(function () {
+
+                var $hiddenInput = $('<input/>', {
+                    type: 'hidden',
+                    value: getCookie('csrftoken'),
+                    name: 'csrfmiddlewaretoken'
+                });
+                $hiddenInput.appendTo('form');
+
+                var $hiddenInput = $('<input/>', {type: 'hidden', value: this.id, name: 'event'});
+                $hiddenInput.appendTo('form');
+
+                $('#dummy_form').submit();
+
+            });
+        });
+
+        $('document').ready(function () {
+            $('[name="round_tab"]').click(function () {
+
+                var $hiddenInput = $('<input/>', {
+                    type: 'hidden',
+                    value: getCookie('csrftoken'),
+                    name: 'csrfmiddlewaretoken'
+                });
+                $hiddenInput.appendTo('form');
+
+                var $hiddenInput = $('<input/>', {type: 'hidden', value: "{{ selected_event }}", name: 'event_tab'});
+                $hiddenInput.appendTo('form');
+
+                var $hiddenInput = $('<input/>', {type: 'hidden', value: this.id, name: 'round_tab'});
+                $hiddenInput.appendTo('form');
+
+                $('#dummy_form').submit();
+
+            });
+        });
+
+    </script>
+
+{% endblock %}

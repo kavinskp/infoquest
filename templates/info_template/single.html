@@ -1,0 +1,124 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    {% load static %}
+    <div class="agileinfo-main about-top">
+        <div class="banner">
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <!-- navigation start here -->
+        <div class="top-nav">
+			<span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li><a href="{% url 'iq' %}"><i aria-hidden="true"
+                                                class="glyphicon glyphicon-home"></i><span>Home</span></a></li>
+                <li><a><i class="glyphicon glyphicon-user"></i><span>Register</span></a>
+                </li>
+                <li><a href="{% url 'iq_events' %}"><i class="glyphicon glyphicon-education"></i><span>Events</span></a></li>
+                <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
+                </li>
+                <li><a href="{% url 'iq_contact' %}"><i
+                        class="glyphicon glyphicon-envelope"></i><span>Contact</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.w3l").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- //script-for-menu -->
+        </div>
+    </div>
+
+    <div class="single">
+        <div class="container">
+            <div class="wthree_single_grid">
+                <h2>Paper Presentation</h2>
+                <ul>
+                    <li><span class="fa fa-user" aria-hidden="true"></span><a href="tel:+919597848009">Mukesh</a></li>
+                    <li><span class="fa fa-phone" aria-hidden="true"></span><a href="tel:+919597848009">+91 9597848009</a></li>
+                    <li><span class="fa fa-pencil-square-o" aria-hidden="true"></span><a href="mailto:mukesh2pleasent@gmail.com">mukesh2pleasent@gmail.com</a>
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <div class="wthree_single_grid1">
+                <h3>Rules and Regulations</h3>
+                <p>
+
+                </p>
+            </div>
+            <div class="popular-posts">
+                <h4 class="w3ls-title">Popular Posts</h4>
+                <div class="popular-posts-grids">
+                    <div class="col-md-3 col-sm-3 col-xs-6 popular-posts-grid">
+                        <div class="popular-posts-grid1">
+                            <a href="single.html"><img src="images/img3.jpg" alt=" " class="img-responsive"></a>
+                            <h4><a href="single.html">dolori perior</a></h4>
+                            <p>Itaque earum rerum hic tenetur a sapiente delectus.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6 popular-posts-grid">
+                        <div class="popular-posts-grid1">
+                            <a href="single.html"><img src="images/img4.jpg" alt=" " class="img-responsive"></a>
+                            <h4><a href="single.html">rerum tenetur</a></h4>
+                            <p>Itaque earum rerum hic tenetur a sapiente delectus.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6 popular-posts-grid">
+                        <div class="popular-posts-grid1">
+                            <a href="single.html"><img src="images/img5.jpg" alt=" " class="img-responsive"></a>
+                            <h4><a href="single.html">saepe eveniet </a></h4>
+                            <p>Itaque earum rerum hic tenetur a sapiente delectus.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6 popular-posts-grid">
+                        <div class="popular-posts-grid1">
+                            <a href="single.html"><img src="images/img6.jpg" alt=" " class="img-responsive"></a>
+                            <h4><a href="single.html">ipsum tenetur</a></h4>
+                            <p>Itaque earum rerum hic tenetur a sapiente delectus.</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="author">
+                <h4 class="w3ls-title"> About Admin </h4>
+                <div class="author-grid">
+                    <div class="author-grid-left">
+                        <img src="images/t1.jpg" alt=" " class="img-responsive ">
+                    </div>
+                    <div class="author-grid-right">
+                        <h4><a href="#">Vaura Tegsner</a><span>Popular Singer</span></h4>
+                        <p>Nam libero tempore, cum soluta nobis est eligendi optio
+                            cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                            voluptas assumenda est, omnis dolor repellendus.</p>
+                        <div class="social-icon">
+                            <a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="write-reply">
+                <h4 class="w3ls-title">Write a Comment</h4>
+                <form action="#" method="post">
+                    <input type="text" name="Name" placeholder="Name" required="">
+                    <input type="text" name="Email" placeholder="Email" required="">
+                    <textarea name="Comment" placeholder="Write a comment here..." required=""></textarea>
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

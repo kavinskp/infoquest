@@ -1,0 +1,138 @@
+<div class="col-md-3 left_col">
+    <div class="left_col scroll-view">
+{% load staticfiles %}
+        <div class="navbar nav_title" style="border: 0;">
+            {% load static %}
+            <a href={% url 'dashboard' %} class="site_title">
+                <img src="{% static "img/gctw.png" %}" width="40" height="48" alt="gct image"/>
+                <span>InfoQuest '17</span>l
+            </a>
+        </div>
+        <div class="clearfix"></div>
+
+        <br>
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+                        <div class="menu_section">
+                            <h3>Workshop</h3>
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-users"></i> Attendance <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href={% url 'mark_student_workshop' %}>Mark Present</a></li>
+                                        <li><a href={% url 'view_present_workshop' %}>View Present</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="menu_section">
+                            <h3>Workshop</h3>
+                            <ul class="nav side-menu">
+
+                                <li><a><i class="fa fa-users"></i> Registrations <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href={% url 'workshop_total_students' %}>View All Entry</a></li>
+                                        <li><a href={% url 'workshop_registered' %}>View Registered</a></li>
+                                        <li><a href={% url 'workshop_unverified' %}>View Unverified registers</a></li>
+                                        <li><a href={% url 'workshop_on_spot' %}>View Onspot registers</a></li>
+                                        <li><a href={% url 'workshop_boys' %}>Boys Accommodation</a></li>
+                                        <li><a href={% url 'workshop_girls' %}>Girls Accommodation</a></li>
+                                        <li><a href={% url 'add_students_workshop' %}>Add Students</a></li>
+                                        <li><a href={% url 'edit_student_workshop' %}>Update Student Info</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a><i class="fa fa-users"></i> Queries <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href={% url 'workshop_queries' %}>View Query</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+
+            <div class="menu_section">
+                <h3>InfoQuest</h3>
+                <ul class="nav side-menu">
+                    {% if request.session.user_name == 'admin@gct.ac.in' or request.session.user_name == 'registration@gct.ac.in' %}
+                        <li><a><i class="fa fa-users"></i> Attendance <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href={% url 'mark_student_infoquest' %}>Mark Present</a></li>
+                                <li><a href={% url 'add_students_infoquest' %}>Add Onspot</a></li>
+                                {% if request.session.user_name == 'admin@gct.ac.in' %}
+                                    <li><a href={% url 'ppt_present' %}>Ppt Present</a></li>
+                                    <li><a href={% url 'event_present' %}>Events Present</a></li>
+                                    <li><a href={% url 'both_present' %}>Both Present</a></li>
+                                    <li><a href={% url 'view_present_infoquest' %}>View Present</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    {% endif %}
+
+                    {% if request.session.user_name != 'registration@gct.ac.in' %}
+                        {% if request.session.user_name != 'admin@gct.ac.in' %}
+                            <li><a><i class="fa fa-users"></i> Events <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href={% url 'selected_students' %}>Shortlist Students</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <br>
+                    <br>
+                    <br>
+                    {% if request.session.user_name == 'admin@gct.ac.in' %}
+                        <li><a><i class="fa fa-users"></i> Registrations <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href={% url 'infoquest_total_students' %}>View All Entry</a></li>
+                                <li><a href={% url 'infoquest_registered' %}>View Registered</a></li>
+                                <li><a href={% url 'infoquest_unverified' %}>View Unverified registers</a></li>
+                                <li><a href={% url 'infoquest_on_spot' %}>View Onspot registers</a></li>
+                                <li><a href={% url 'infoquest_boys' %}>Boys Accommodation</a></li>
+                                <li><a href={% url 'infoquest_girls' %}>Girls Accommodation</a></li>
+                                <li><a href={% url 'edit_student_infoquest' %}>Update Student Info</a></li>
+                                <li><a href={% url 'view_present_infoquest' %}>View Present</a></li>
+                                <li><a href={% url 'ppt_present' %}>Ppt Present</a></li>
+                                <li><a href={% url 'event_present' %}>Events Present</a></li>
+                                <li><a href={% url 'both_present' %}>Both Present</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a><i class="fa fa-users"></i> Queries <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href={% url 'infoquest_queries' %}>View Query</a></li>
+                            </ul>
+                        </li>
+
+
+
+                        <li><a><i class="fa fa-users"></i> Events <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href={% url 'add_infoquest_events' %}>Add New Event</a></li>
+                                <li><a href={% url 'selected_students' %}>Shortlist Students</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a><i class="fa fa-users"></i> Ppt <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href={% url 'infoquest_ppt_submiited' %}>Add Student</a></li>
+                                <li><a href={% url 'infoquest_view_ppt_submitted' %}>View Student</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a><i class="fa fa-users"></i> Result <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href={% url 'result_display_order' %}>Re-order Result</a></li>
+                            </ul>
+                        </li>
+
+                    {% endif %}
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>

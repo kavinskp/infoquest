@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class=" " lang="en">
+<head>
+{% load staticfiles %}
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <script type="text/javascript" src="{% static 'cdns/jquery.js' %}"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script type="text/javascript" src="{% static 'cdns/jquery.datetimepicker.full.js' %}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.js"></script>
+    <link href="{% static 'cdns/jquery-ui.css' %}" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/cupertino/jquery-ui.css" rel="stylesheet">
+
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+<link rel="stylesheet" href="{% static 'cdns/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'cdns/fixedsticky.css' %}">
+<link rel="stylesheet" href="{% static 'cdns/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'cdns/foundation-icons.css' %}">
+<link rel="stylesheet" href="{% static 'cdns/style.css' %}">
+<link rel="stylesheet" href="{% static 'cdns/ionicons.css' %}">
+<link rel="stylesheet" href="{% static 'cdns/material-icons.css' %}">
+<link rel="stylesheet" href="{% static 'cdns/octicons.css' %}">
+
+    <link rel="stylesheet" href="https://www.glyphsearch.com/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.glyphsearch.com/bower_components/fixed-sticky/fixedsticky.css">
+    <link rel="stylesheet" href="https://www.glyphsearch.com/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://www.glyphsearch.com/bower_components/foundation-icon-fonts/foundation-icons.css">
+    <link rel="stylesheet" href="https://www.glyphsearch.com/bower_components/icomoon/dist/css/style.css">
+    <link rel="stylesheet" href="https://www.glyphsearch.com/bower_components/ionicons/css/ionicons.css">
+    <link rel="stylesheet"
+          href="https://www.glyphsearch.com/bower_components/material-design-icons/iconfont/material-icons.css">
+    <link rel="stylesheet" href="https://www.glyphsearch.com/bower_components/octicons/octicons/octicons.css">
+    <link rel="stylesheet" href={% static "dashboard/vendors/bootstrap/dist/css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href={% static "dashboard/vendors/font-awesome/css/font-awesome.min.css" %}>
+    <link rel="stylesheet" href={% static "dashboard/vendors/nprogress/nprogress.css" %}>
+    <link rel="stylesheet" href={% static "dashboard/build/css/custom.min.css" %}>
+
+    <!--pnotify-->
+    <link rel="stylesheet" href={% static "dashboard/vendors/pnotify/dist/pnotify.css" %}>
+    <link rel="stylesheet" href={% static "dashboard/vendors/pnotify/dist/pnotify.buttons.css" %}>
+    <link rel="stylesheet" href={% static "dashboard/vendors/pnotify/dist/pnotify.mobile.css" %}>
+
+    <!--pnotify - js -->
+    <script src={% static "dashboard/vendors/pnotify/dist/pnotify.js" %}></script>
+    <script src={% static "dashboard/vendors/pnotify/dist/pnotify.buttons.js" %}></script>
+    <script src={% static "dashboard/vendors/pnotify/dist/pnotify.mobile.js" %}></script>
+    <script src={% static "dashboard/vendors/pnotify/dist/pnotify.animate.js" %}></script>
+
+    <link rel="stylesheet" href="{% static 'mdbuser/style.css' %}">
+
+    {% block head_block %}
+
+    {% endblock %}
+    <style>
+        body {
+            font-size-adjust: 0.63;
+        }
+
+        /* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+        .loadingajax {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+
+        }
+
+        /* When the body has the loading class, we turn
+           the scrollbar off with overflow:hidden */
+        body.loading {
+            overflow: hidden;
+        }
+
+        /* Anytime the body has the loading class, our
+           modal element will be visible */
+        body.loading .loadingajax {
+            display: block;
+        }
+    </style>
+</head>
+
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</div>
+<script src={% static "dashboard/vendors/jquery/dist/jquery.min.js" %}></script>
+<script src={% static "dashboard/vendors/bootstrap/dist/js/bootstrap.min.js" %}></script>
+<script src={% static "dashboard/vendors/fastclick/lib/fastclick.js" %}></script>
+<script src={% static "dashboard/vendors/nprogress/nprogress.js" %}></script>
+<script src={% static "dashboard/build/js/custom.min.js" %}></script>
+
+<script src="{% static 'cdns/jquery-ui.js' %}"></script>
+{#<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>#}
+
+<div class="loadingajax"><!-- Place at bottom of page --></div>
+
+<script type="text/javascript">
+    $(document).ajaxStart(function () {
+        $("body").addClass("loading");
+    });
+
+    $(document).ajaxComplete(function () {
+        $("body").removeClass("loading");
+    });
+</script>
+
+</body>
+</html>

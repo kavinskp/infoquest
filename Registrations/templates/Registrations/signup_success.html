@@ -1,0 +1,22 @@
+{% extends 'dashboard/dashboard_header.html' %}
+
+{% block title %}
+    Registration Success
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-10 col-md-offset-1">
+        <div class="col-middle">
+            <div class="text-center text-center">
+                <div class="jumbotron">
+                    <div class="container">
+                        <h1> Registration Requested Successfully </h1>
+                        <br>
+                        <h2> A Verification email has been sent to your mail ( <strong>{{ mail }}</strong> ).<br><br>
+                           <strong> Please verify it to confirm your registration </strong></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

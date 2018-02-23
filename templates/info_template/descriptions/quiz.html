@@ -1,0 +1,96 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    {% load static %}
+    <div class="agileinfo-main about-top">
+        <div class="banner">
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <!-- navigation start here -->
+        <div class="top-nav">
+			<span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li><a href="{% url 'iq' %}"><i aria-hidden="true"
+                                                class="glyphicon glyphicon-home"></i><span>Home</span></a></li>
+                <li><a><i class="glyphicon glyphicon-user"></i><span>Register</span></a>
+                </li>
+                <li><a href="{% url 'iq_events' %}"><i class="glyphicon glyphicon-education"></i><span>Events</span></a>
+                </li>
+                <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
+                </li>
+                <li><a href="{% url 'iq_contact' %}"><i
+                        class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.w3l").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- //script-for-menu -->
+        </div>
+    </div>
+
+    <div class="single" style="background-color: #bdd8de">
+        <div class="container">
+            <div class="wthree_single_grid" style="margin: 10px">
+                <h2 style="font-size: 2.4em">Quiz</h2>
+                <p style='font-size: 20px;color: #333333'>
+                    Cash prize will be Awarded
+                </p><br>
+                <h3 style="font-size: 2.4em">Round 1 - Open till 1 PM on 27th March <span style="color: #007b70">(Duration - 30 mins)</span></h3><br>
+                <h3 style="font-size: 2.4em">Round 2 - 27th March Afternoon for shortlisted candidates <span style="color: #007b70">(Duration - 30 mins)</span></h3><br>
+                <p style='font-size: 20px;color: #333333'>
+                    Quiz competition is a pursuit of trivial Knowledge, encourage students to achieve academic
+                    excellence and Increase their awareness of the world around them.Recognize and appreciate
+                    non-traditional values for competition. Build self-esteem and pride.
+                </p>
+            </div>
+            <div class="wthree_single_grid1" style="margin: 40px">
+                <h2 style="font-size: 2em">Rules and Regulations</h2>
+                <br>
+                <div style="font-size: 1.3em;">
+                    <table class="table table-bordered" style="color: #682527;">
+                        <tr>
+                            <td>Type of event: Individual</td>
+                            <td>Number of rounds: 2 (Elimination in first round)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" style="background-color: #3b5a3e;color: #bb4b7d"><strong>General rules</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-indent: 30px;">
+                                    <p style="color: #682527">
+                                        No use of external web resource or any other resources for the test. On account of usage of any such resources the participants are subject to immediate disqualification.
+                                    </p>
+                                    <p style="color: #682527">The decision of the Event coordinators will be final on ambiguous scenarios.</p>
+                                    <p style="color: #682527">Each question will be strictly evaluated and any plagiarism is not encouraged.
+                                    </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" style="background-color: #3b5a3e;color: #bb4b7d"><strong>Rounds</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Multiple Choice Questions</td>
+                            <td>General Knowledge</td>
+                        </tr>
+                        <tr>
+                            <td>Team Event</td>
+                            <td>Logical Thinking,Current Affairs</td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <b>Note:</b> Only event coordinators make final judgement, and there will not be any changes.
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

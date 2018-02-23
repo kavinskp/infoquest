@@ -1,0 +1,257 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'workshop/css/main_infoquest.css' %}">
+
+    <link href="{% static 'countdown/css/jquerysctipttop.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{% static 'countdown/css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+
+    <link href="{% static 'workshop_design/css/main_fit.css' %}" rel="stylesheet">
+    <link href="{% static 'workshop_design/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'workshop_design/css/responsive.css' %}" rel="stylesheet">
+    <div class="agileinfo-main">
+
+        <div class="slider">
+            <script src="{% static 'infoquest/js/responsiveslides.min.js' %}"></script>
+
+            <script>
+                // You can also use "$(window).load(function() {"
+                $(function () {
+                    // Slideshow 1
+                    $("#slider1").responsiveSlides({
+                        auto: true,
+                        nav: true,
+                        speed: 1000,
+                        namespace: "callbacks"
+                    });
+                });
+            </script>
+
+            <ul class="rslides" id="slider1">
+                <li>
+                    <div class="banner">
+                        <h3 style="font-size: x-large;color: #ffffff;font-weight: bolder;">
+                            Mark your schedules and make sure you don't miss out on the highlights that IQ offers.
+                        </h3>
+                    </div>
+                </li>
+                <li>
+                    <div class="banner banner2">
+                        <h3 style="font-size: x-large;color: #ffffff;font-weight: bolder;">
+                            Ignite your inner processor chip and get set to witness some extraordinary feats!!!
+                        </h3>
+                    </div>
+                </li>
+                <li>
+                    <div class="banner banner3">
+                        <h3 style="font-size: x-large;color: #ffffff;font-weight: bolder;">
+                            Rev up your computers and pump up your adrenaline for the grand extravaganza IQ '18!
+                        </h3>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <!-- navigation start here -->
+        <div class="top-nav">
+            <span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li>
+                    <a class="active" href="{% url 'iq' %}"><i class="fa fa-home"></i><span>Home</span></a>
+                </li>
+                <li><a href="{% url 'iq_register' %}"><i class="glyphicon glyphicon-user"></i><span>Register</span></a>
+                </li>
+                <li><a href="{% url 'iq_events' %}"><i class="glyphicon glyphicon-education"></i><span>Events</span></a>
+                </li>
+                <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
+                </li>
+                <li><a href="{% url 'iq_contact' %}"><i class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.w3l").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- //script-for-menu -->
+        </div>
+    </div>
+
+
+
+
+    <!-- navigation end here -->
+    <!-- banner end here -->
+    <div class="wave-bg">
+        <div class="footer" style="background-color: rgba(33, 53, 51, 0.77)">
+            <div class="container">
+                <div class="banner-w3bottom-row">
+                    <div class="col-md-12">
+                        <h2 style="color: #35a6bf" id="countdown_text" align="center">EVENTS STARTS IN .....</h2><br>
+                    </div>
+                    <div class="col-md-12">
+                        <ul id="countdown">
+                            <li>
+                                <span class="days time-font" id="days"></span>
+                                <p>days </p>
+                            </li>
+                            <li>
+                                <span class="hours time-font" id="hours"></span>
+                                <p class="">hours </p>
+                            </li>
+                            <li>
+                                <span class="minutes time-font" id="minutes"></span>
+                                <p class="">minutes</p>
+                            </li>
+                            <li>
+                                <span class="seconds time-font" id="seconds"></span>
+                                <p class="">seconds</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //banner end here -->
+    <!-- welcome -->
+    <div style="background-color: rgba(154, 186, 212, 0.57)">>
+        {#            <h2 class="agile-title">Welcome To Our Site</h2>#}
+        <br>
+        <br>
+        <h1 style="color: #192e2d" align="center">Government College of Technology</h1><br>
+        <h3 style="color: #192e2d" align="center">Coimbatore - 13</h3><br>
+        <h2 style="color: #192e2d" align="center">Department of Computer Science and Engineering</h2><br>
+        <h4 style="color: #192e2d" align="center">presents</h4><br>
+        <h1 class="agile-title" align="center">InfoQuest '18</h1><br>
+        <h4 style="color: #192e2d" align="center">on</h4><br>
+        <h2 style="color: #007b70" align="center">23.03.18 & 24.03.18</h2><br>
+        <h3 style="color: #192e2d" align="center">Venue: GCT Auditorium</h3><br>
+        <div class="container">
+            <div class="col-md-4">
+                <h3 style="color: #192e2d" align="center">PPT - <i class="fa fa-inr">150</i></h3>
+            </div>
+            <div class="col-md-4">
+                <h3 style="color: #192e2d" align="center">Events - <i class="fa fa-inr">200</i></h3>
+            </div>
+            <div class="col-md-4">
+                <h3 style="color: #192e2d" align="center">PPT + Events - <i class="fa fa-inr">250</i></h3>
+            </div>
+        </div>
+        <br>
+        <h3 style="color: #1e7879" align="center">(including 2 days Lunch)</h3><br>
+        <br>
+        <div align="center">
+            {#            <a class="button stroke" href="{% url 'iq_register' %}"> Register Now <i#}
+            {#                    class="fa fa-chevron-right"></i></a>#}
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="map">
+            <h3 class="agile-title">Bus Routes to GCT</h3>
+            <ul style="font-size: 1.5em;margin: 30px;color: #000000">
+                <li>From Gandhipuram town bus stand, Bus Number 70 is available every 15 minutes which drops you at GCT
+                    within 20 mins.
+                </li>
+                <li>From Ukkadam, Bus Numbers 78c is available at particular timings.</li>
+                <li>
+                    From Railway Station,
+                    <ul style="margin: 20px">
+                        <li>Bus Number 1C drops you at Lawley Road and a 5 mins walk to GCT.</li>
+                        <li>Bus Number 11 drops you at Venkittapuram and a 5 mins walk to GCT.</li>
+                    </ul>
+                </li>
+                <li>From Singanallur, Bus Numbers 1c drops you at Lawley Road and a 5 mins walk to GCT.</li>
+            </ul>
+            <br>
+            <h3 class="agile-title">How to find Us</h3><br>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.245469232651!2d76.93401034975331!3d11.020200657623118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba858dc68b80bbf%3A0x24bab8d60d2bc693!2sGovernment+College+of+Technology!5e0!3m2!1sen!2sin!4v1487747409499"
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+    <!-- Custom-JavaScript-File-Links -->
+    <script src="{% static 'countdown/js/jquery-1.12.3.min.js' %}"
+            integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{% static 'countdown/js/moment.js' %}"></script>
+    <script type="text/javascript" src="{% static 'countdown/js/moment-timezone-with-data.js' %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            function timer(settings) {
+                var config = {
+                    endDate: '2018-03-23 09:30',
+                    timeZone: 'Asia/kolkata',
+                    hours: $('#hours'),
+                    minutes: $('#minutes'),
+                    seconds: $('#seconds'),
+                    newSubMessage: 'and should be back online in a few minutes...'
+                };
+
+                function prependZero(number) {
+                    return number < 10 ? '0' + number : number;
+                }
+
+                $.extend(true, config, settings || {});
+                var currentTime = moment();
+                var endDate = moment.tz(config.endDate, config.timeZone);
+                var diffTime = endDate.valueOf() - currentTime.valueOf();
+                var duration = moment.duration(diffTime, 'milliseconds');
+                var days = duration.days();
+                var interval = 1000;
+                var subMessage = $('.sub-message');
+                var clock = $('.clock');
+                if (diffTime < 0) {
+                    endEvent(subMessage, config.newSubMessage, clock);
+                    document.getElementById('countdown_text').innerHTML = '<h1>Events are Online ...</h1>';
+                    document.getElementById('countdown').innerHTML = '';
+                    return;
+                }
+                if (days > 0) {
+                    $('#days').text(prependZero(days));
+                    $('.days').css('display', 'inline-block');
+                }
+                var intervalID = setInterval(function () {
+                    duration = moment.duration(duration - interval, 'milliseconds');
+                    var hours = duration.hours(),
+                        minutes = duration.minutes(),
+                        seconds = duration.seconds();
+                    days = duration.days();
+                    if (hours <= 0 && minutes <= 0 && seconds <= 0 && days <= 0) {
+                        clearInterval(intervalID);
+                        endEvent(subMessage, config.newSubMessage, clock);
+                        window.location.reload();
+                    }
+                    if (days === 0) {
+                        //$('.days').hide();
+                    }
+                    $('#days').text(prependZero(days));
+                    config.hours.text(prependZero(hours));
+                    config.minutes.text(prependZero(minutes));
+                    config.seconds.text(prependZero(seconds));
+                }, interval);
+            }
+
+            function endEvent($el, newText, hideEl) {
+                $el.text(newText);
+                hideEl.hide();
+            }
+
+            timer();
+        });
+    </script>
+
+    <!-- //Custom-JavaScript-File-Links -->
+
+{% endblock %}

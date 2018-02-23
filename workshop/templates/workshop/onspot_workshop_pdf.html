@@ -1,0 +1,61 @@
+{% extends "easy_pdf/base.html" %}
+
+{% block extra_style %}
+    <style type="text/css">
+        @page {
+            size: letter landscape;
+            margin: 1cm;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% if context %}
+        <div style="padding-top: 1em;">
+            <div align="center" style="line-height: 20px">
+                <h4 style="font-size: 2em;font-stretch: semi-expanded;font-weight: bold">GOVERNMENT COLLEGE OF
+                    TECHNOLOGY, COIMBATORE - 641 013</h4>
+                <h5 style="font-size: 2em;font-stretch: semi-expanded">Workshop2k17 On-spot Registerations</h5>
+            </div>
+        </div>
+        <div><br></div>
+        <table border="1" style="border-width: thin;padding-top: 30%">
+            <thead>
+            <tr>
+                <td align="center" style="font-weight: bold;font-size: large;width: 5%;">S.No.</td>
+                <td align="center" style=" font-weight: bold;font-size: large;width: 15%;">Name</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 5%;">Gender</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 20%;">College</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 3%;">Year</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 7%;">Mob. No.</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 20%;">Email</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 5%;">Acc</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 5%;">Avail</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 15%;">Signature</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for student in context.student_list %}
+                <tr>
+                    <td align="center">{{ forloop.counter }}</td>
+                    <td align="left">&nbsp;&nbsp;{{ student.name }}</td>
+                    <td align="center">&nbsp;&nbsp;{{ student.gender }}</td>
+                    <td align="left">&nbsp;&nbsp;{{ student.college }} ({{ student.location }})</td>
+                    <td align="center">{{ student.year_of_study }}</td>
+                    <td align="center">{{ student.phone_number }}</td>
+                    <td align="left">&nbsp;&nbsp;{{ student.email }}</td>
+                    <td align="center">&nbsp;&nbsp;
+                        {% if student.accommodation %}
+                            Yes
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td style="width: 5%"></td>
+                    <td style="width: 15%"></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

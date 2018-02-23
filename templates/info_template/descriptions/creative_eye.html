@@ -1,0 +1,119 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    {% load static %}
+    <div class="agileinfo-main about-top">
+        <div class="banner">
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <!-- navigation start here -->
+        <div class="top-nav">
+			<span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li><a href="{% url 'iq' %}"><i aria-hidden="true"
+                                                class="glyphicon glyphicon-home"></i><span>Home</span></a></li>
+                <li><a><i class="glyphicon glyphicon-user"></i><span>Register</span></a>
+                </li>
+                <li><a href="{% url 'iq_events' %}"><i class="glyphicon glyphicon-education"></i><span>Events</span></a>
+                </li>
+                <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
+                </li>
+                <li><a href="{% url 'iq_contact' %}"><i
+                        class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.w3l").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- //script-for-menu -->
+        </div>
+    </div>
+
+    <div class="albums agile-blog">
+        <div class="container">
+            <h2 class="agile-title">Creative Eye</h2>
+            <p style='font-size: 20px;color: #333333' align="center">
+                Cash prize will be Awarded
+            </p><br>
+            <!-- Blind Coding -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 27th March </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'blind_coding' %}" class="wthree-almub wthree-almub_blind_coding">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'blind_coding' %}" style="color: #ffd400">Blind Coding</a></h2>
+                    <p></p>
+                    <a class="w3more" href="{% url 'blind_coding' %}"><i class="fa fa-mail-forward"
+                                                                         aria-hidden="true"></i> More</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Eagle Finger -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 27th March </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'eagle_finger' %}" class="wthree-almub wthree-almub_eagle_finger">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'eagle_finger' %}" style="color: #ffd400">Eagle Finger</a></h2>
+                    <p></p>
+                    <a class="w3more" href="{% url 'eagle_finger' %}"><i class="fa fa-mail-forward"
+                                                                         aria-hidden="true"></i> More</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Meme Creation -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 27th March </h5>
+                </div>
+                <div class="albums1-right">
+                    <a href="{% url 'meme_creation' %}" class="wthree-almub wthree-almub_meme_creation">
+                    </a>
+                </div>
+                <div class="albums1-left">
+                    <h2><a href="{% url 'meme_creation' %}" style="color: #ffd400">Meme Creation</a></h2>
+                    <p></p>
+                    <a class="w3more" href="{% url 'meme_creation' %}"><i class="fa fa-mail-forward"
+                                                                          aria-hidden="true"></i> More</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Connections -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 27th March </h5>
+                </div>
+                <div class="albums1-right">
+                    <a href="{% url 'connections' %}" class="wthree-almub wthree-almub_connections">
+                    </a>
+                </div>
+                <div class="albums1-left">
+                    <h2><a href="{% url 'connections' %}" style="color: #ffd400">Connections</a></h2>
+                    <p></p>
+                    <a class="w3more" href="{% url 'connections' %}"><i class="fa fa-mail-forward"
+                                                                        aria-hidden="true"></i> More</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function startTime() {
+            var tdy = srvTime();
+            var today = new Date();
+            //alert(tdy.toLocaleString())
+            var h = today.getHours() > 12 ? today.getHours() - 12 : today.getHours();
+            var am_pm = today.getHours() >= 12 ? "PM" : "AM";
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML = today.toDateString() + "  " + h + ":" + m + ":" + s + " " + am_pm;
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i
+            }
+            return i;
+        }
+
+        function srvTime() {
+            X = ((!window.XMLHttpRequest) ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest);
+            X.open('HEAD', window.location.href, !!0);
+            X.send('');
+            return X.getResponseHeader("Date");
+        }
+
+        //alert(srvTime())
+    </script>
+</head>
+
+<body onload="startTime()">
+<table>
+    <thead>
+    <th id="txt" style="color: #9609b5"></th>
+    </thead>
+</table>
+</body>
+</html>

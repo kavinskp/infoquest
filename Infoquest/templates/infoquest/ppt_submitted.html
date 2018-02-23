@@ -1,0 +1,193 @@
+{% extends 'dashboard/dashboard_content.html' %}
+
+{% block title %}
+    Mark Available Ppts
+{% endblock %}
+
+{% block head_block %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/i18n/defaults-*.min.js"></script>
+
+{% endblock %}
+
+{% block rightPane %}
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-user"></i>
+                Mark Available Ppts
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <form method="POST">{% csrf_token %}
+                        <div class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Name
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select class="selectpicker" name="email" data-width="400px" data-live-search="true"
+                                            title="Select student"
+                                            required>
+                                        {% for student in list_of_students %}
+                                            <option value="{{ student.id }}"
+                                                    data-subtext="{{ student.registration_type }}-{{ student.email }}">{{ student.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <button type="submit" name="get_detail" class="btn1 btn-purple">Get details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% if student %}
+                <div class="ln_solid"></div>
+                <div class="x_content" align="center">
+                    <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
+
+                        <table class="table table-striped">
+                            <tr>
+
+                                <th style="color: #a951ed"><i class="fa fa-user"></i>&nbsp;&nbsp;
+                                    Name
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {{ student.name }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="color: #a951ed"><i class="fa fa-phone"></i>&nbsp;&nbsp;
+                                    Phone no
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {{ student.phone_number }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="color: #a951ed"><i class="fa fa-envelope"></i>&nbsp;&nbsp;
+                                    Email id
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {{ student.email }}
+                                </td>
+                            </tr>
+                            <tr style="color: #a951ed">
+                                <th>
+                                    {% if student.gender == 'M' %}
+                                        <i class="fa fa-mars"></i>&nbsp;&nbsp;
+                                    {% else %}
+                                        <i class="fa fa-venus"></i>&nbsp;&nbsp;
+                                    {% endif %}
+                                    Gender
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {% if student.gender == 'M' %}
+                                        Male
+                                    {% else %}
+                                        Female
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="color: #a951ed"><i class="fa fa-university"></i>&nbsp;&nbsp;
+                                    Department
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {{ student.department }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="color: #a951ed"><i class="fa fa-university"></i>&nbsp;&nbsp;
+                                    College
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {{ student.college }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="color: #a951ed"><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;
+                                    Location
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {{ student.location }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="color: #a951ed"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;
+                                    Year of Study
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {% if student.year_of_study == '1' %}
+                                        I year
+                                    {% endif %}
+                                    {% if student.year_of_study == '2' %}
+                                        II year
+                                    {% endif %}
+                                    {% if student.year_of_study == '3' %}
+                                        III year
+                                    {% endif %}
+                                    {% if student.year_of_study == '4' %}
+                                        IV year
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="color: #a951ed"><i class="fa fa-building"></i>&nbsp;&nbsp;
+                                    Accommodation
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {% if student.accommodation %}
+                                        <i class="fa fa-check"></i>
+                                    {% else %}
+                                        <i class="fa fa-remove"></i>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </table>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="student" value="{{ student.id }}">
+                            <button type="submit" name="submit" class="btn1 btn-dark-green"> Available</button>
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        {% if present_student %}
+            $(function () {
+                new PNotify({
+                    title: 'Success!',
+                    text: '{{ present_student }} \'s ppt is available.',
+                    type: 'success',
+                    styling: 'bootstrap3',
+                    min_height: "20px",
+                    mobile: {'styling': true}
+                });
+            });
+        {% endif %}
+    </script>
+
+{% endblock %}

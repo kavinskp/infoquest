@@ -1,0 +1,361 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block head_block %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mdbuser/style.css' %}">
+    <link rel="stylesheet" href="{% static 'reg_form/css/style3.css' %}" type="text/css" media="all"/>
+    <!-- Style-CSS -->
+    <link rel="stylesheet" href="{% static 'reg_form/css/font-awesome.css' %}"> <!-- Font-Awesome-Icons-CSS -->
+
+
+
+    <link href="{% static 'video_bg/css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+
+    <link href="{% static 'workshop_design/css/animate.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static "dashboard/vendors/bootstrap/dist/css/bootstrap.min.css" %}">
+
+{% endblock %}
+
+{% block body_content %}
+    {% comment %}<div id="videoDiv">
+        <div id="videoBlock">
+            <video preload="preload" id="video" autoplay="autoplay" loop="loop">
+                <source src="{% static 'reg_form/video/Ipad.mp4' %}" type="video/mp4">
+            </video>
+            <div id="videoMessage">
+
+            </div>
+        </div>
+    </div>{% endcomment %}
+
+    <div class="agileinfo-main about-top">
+        <div class="banner">
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <div class="top-nav">
+            <span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li><a href="{% url 'iq' %}"><i aria-hidden="true"
+                                                class="glyphicon glyphicon-home"></i><span>Home</span></a></li>
+                <li><a class="active"><i class="glyphicon glyphicon-user"></i><span>Register</span></a></li>
+                <li><a href="{% url 'iq_events' %}"><i class="glyphicon glyphicon-education"></i><span>Events</span></a>
+                </li>
+                <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
+                </li>
+                <li><a href="{% url 'iq_contact' %}"><i
+                        class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+            </ul>
+
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.w3l").slideToggle(300, function () {
+
+                    });
+                });
+            </script>
+
+        </div>
+    </div>
+
+
+    {#    <div data-vide-bg="{% static 'reg_form/video/Ipad.mp4' %}">#}
+    <div style="background-color: rgba(4, 74, 76, 0.83);">
+        <div class="center-container">
+            <h2 align="center" style="color: #29b0b7">Now InfoQuest on Youtube!</h2>
+            <h1 class="bounce bounceIn animated" align="center"><i style="color: #29b0b7" class="fa fa-hand-o-right"></i>&nbsp;<a
+                    style="color: #09eaf5" href="https://www.youtube.com/channel/UCOqCQ818UlIGXtXFa-mSMhw"
+                    target="_blank"><u>Infoquest Gct</u></a></h1>
+            <h3 align="center" style="color: #29b0b7">
+                Deadline for PPT abstract submission: <strong>24.03.2017</strong>
+            </h3>
+            <div id="ppt_form" class="header-main" style="color: #17e6be;display: none">
+                <h1 id="registration_title" class="font">Registration</h1>
+                <h2 align="center" class="font">Registration Fee &nbsp;<i class="fa fa-inr"></i>&nbsp;<span
+                        style="font-family: 'Coustard', serif" id="registration_fee"></span></h2>
+                <br>
+                <form id="submit_form" class="form-horizontal form-label-left" data-toggle="validator" role="form"
+                      method="POST">
+                    {% csrf_token %}
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
+                               style="font-size: large; font-weight: bolder"> Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" name="name" placeholder="Enter your name"
+                                   data-error="Enter your name" required style="font-weight: bold">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
+                               style="font-size: large; font-weight: bolder"> Gender <span
+                                class="required" style="font-size: large; font-weight: bolder">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary" data-toggle-class="btn-default"
+                                       data-toggle-passive-class="btn-default">
+                                    <input name="gender" value="M" data-parsley-multiple="gender"
+                                           data-parsley-id="12"
+                                           type="radio" data-error="Choose your gender" required> &nbsp; Male &nbsp;
+                                </label>
+                                <label class="btn btn-primary" data-toggle-class="btn-primary"
+                                       data-toggle-passive-class="btn-default">
+                                    <input name="gender" value="F" data-parsley-multiple="gender" type="radio">
+                                    Female
+                                </label>
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="email"
+                               style="font-size: large; font-weight: bolder"> Email <span
+                                class="required" style="font-size: large; font-weight: bolder">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="email" class="form-control" placeholder="Email"
+                                   data-error="Enter a valid email" name="email" required style="font-weight: bold">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="number"
+                               style="font-size: large; font-weight: bolder"> Mobile Number <span
+                                class="required" style="font-size: large; font-weight: bolder">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" pattern="^[0-9]+$" maxlength="10" minlength="10" class="form-control"
+                                   name="mobile"
+                                   data-error="Enter a valid mobile number"
+                                   placeholder="Enter your Mobile number" required style="font-weight: bold">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
+                               style="font-size: large; font-weight: bolder"> Department <span
+                                class="required" style="font-size: large; font-weight: bolder">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" name="department"
+                                   data-error="Enter your department name"
+                                   placeholder="Enter your department name" required type="text"
+                                   style="font-weight: bold">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
+                               style="font-size: large; font-weight: bolder"> College <span
+                                class="required" style="font-size: large; font-weight: bolder">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" name="college"
+                                   data-error="Enter your college name"
+                                   placeholder="Enter your College name" required type="text"
+                                   style="font-weight: bold">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
+                               style="font-size: large; font-weight: bolder"> Location <span
+                                class="required" style="font-size: large; font-weight: bolder">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" name="location"
+                                   data-error="Enter location of your college"
+                                   placeholder="Enter your College location" required type="text"
+                                   style="font-weight: bold">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
+                               style="font-size: large; font-weight: bolder"> Year of Study <span
+                                class="required" style="font-size: large; font-weight: bolder">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select name="year" class="form-control col-md-7 col-xs-12" style="font-weight: bold"
+                                    data-error="Choose year of study" required>
+                                <option disabled selected value=""> Choose any one</option>
+                                <option value="1">1st Year</option>
+                                <option value="2">2nd Year</option>
+                                <option value="3">3rd Year</option>
+                                <option value="4">4th Year</option>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
+                               style="font-size: large; font-weight: bolder"> Accommodation Needed <span
+                                class="required" style="font-size: large; font-weight: bolder">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary" data-toggle-class="btn-default"
+                                       data-toggle-passive-class="btn-default">
+                                    <input name="accommodation" value="Y" data-parsley-multiple="accommodation"
+                                           data-parsley-id="12"
+                                           type="radio" data-error="Accommodation ?" required> &nbsp; Yes &nbsp;
+                                </label>
+                                <label class="btn btn-primary" data-toggle-class="btn-primary"
+                                       data-toggle-passive-class="btn-default">
+                                    <input name="accommodation" value="N" data-parsley-multiple="accommodation"
+                                           type="radio"> &nbsp; No &nbsp;
+                                </label>
+                            </div>
+                            <div class="help-block with-errors">For Girls accommodation fee &nbsp;&nbsp;<i
+                                    class="fa fa-inr" style="color: #17e6be">100</i></div>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button id="button_ppt" style="display: none" type="submit" name="register_ppt"
+                                    class="btn1-sm btn-dark-green"> Register for PPT
+                            </button>
+                            <button id="button_events" style="display: none" type="submit" name="register_events"
+                                    class="btn1-sm btn-dark-green"> Register for Events
+                            </button>
+                            <button id="button_ppt_events" style="display: none" type="submit"
+                                    name="register_ppt_events" class="btn1-sm btn-dark-green"> Register for PPT & Events
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="welcome agileits" id="choose_register">
+                <div class="container">
+                    <div class="welcome-agileinfo">
+{#                        <div class="col-md-4 welcome-grids" id="ppt">#}
+{#                            <div class="view view-w3-agile" onmouseover="$(this).css('cursor','pointer');">#}
+{#                                <img src="{% static 'infoquest/images/register_ppt.jpg' %}" alt=""#}
+{#                                     class="img-responsive"/>#}
+{#                                <div class="agileits-w3layouts-mask">#}
+{#                                    <h4>PPT only</h4>#}
+{#                                    <p><i class="fa fa-inr" style="color: #17e6be">&nbsp;150</i>&nbsp;&nbsp;<i#}
+{#                                            style="font-size: 20px" class="fa fa-hand-o-up"></i></p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+                        <div class="col-md-6 welcome-grids" id="events">
+                            <div class="view view-w3-agile" onmouseover="$(this).css('cursor','pointer');">
+                                <img src="{% static 'infoquest/images/register_events.jpg' %}" alt=""
+                                     class="img-responsive"/>
+                                <div class="agileits-w3layouts-mask">
+                                    <h4>Events only</h4>
+                                    <p><i class="fa fa-inr" style="color: #17e6be">&nbsp;200</i>&nbsp;&nbsp;<i
+                                            style="font-size: 20px" class="fa fa-hand-o-up"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 welcome-grids" id="ppt_events">
+                            <div class="view view-w3-agile" onmouseover="$(this).css('cursor','pointer');">
+                                <img src="{% static 'infoquest/images/register_ppt_events.jpg' %}" alt=""
+                                     class="img-responsive"/>
+                                <div class="agileits-w3layouts-mask">
+                                    <h4>Ppt & Events</h4>
+                                    <p><i class="fa fa-inr" style="color: #17e6be">&nbsp;250</i>&nbsp;&nbsp;<i
+                                            style="font-size: 20px" class="fa fa-hand-o-up"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <br>
+                <h1 style="font-size: xx-large;color: #4dbbba" align="center">Sponsored by</h1>
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-6">
+                    <a href="https://facebook.com/uniqtechnologies" target="_blank"> <img
+                            src="{% static 'sponser/UNIQ_Logo_size.jpg' %}" class="img-responsive" alt="..."></a>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        //For getting CSRF token
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        $(document).on("click", '#ppt', function (e) {
+            {#            $('#events_form').hide();#}
+            {#            $('#ppt_events_form').hide();#}
+            $('#ppt_form').show();
+            $('#button_events').hide();
+            $('#button_ppt_events').hide();
+            $('#button_ppt').show();
+            window.scrollTo(0, 0);
+            document.getElementById('registration_title').innerText = 'PPT Registration';
+            document.getElementById('registration_fee').innerText = '150';
+        });
+
+        $(document).on("click", '#events', function (e) {
+            {#            $('#ppt_form').hide();#}
+            {#            $('#ppt_events_form').hide();#}
+            {#            $('#events_form').show();#}
+            $('#ppt_form').show();
+            $('#button_ppt').hide();
+            $('#button_ppt_events').hide();
+            $('#button_events').show();
+            window.scrollTo(0, 0);
+            document.getElementById('registration_title').innerText = 'Events Registration';
+            document.getElementById('registration_fee').innerText = '200';
+        });
+
+        $(document).on("click", '#ppt_events', function (e) {
+            {#            $('#ppt_form').hide();#}
+            {#            $('#events_form').hide();#}
+            {#            $('#ppt_events_form').show();#}
+            $('#ppt_form').show();
+            $('#button_ppt').hide();
+            $('#button_events').hide();
+            $('#button_ppt_events').show();
+            window.scrollTo(0, 0);
+            document.getElementById('registration_title').innerText = 'PPT & Events Registration';
+            document.getElementById('registration_fee').innerText = '250';
+        });
+
+    </script>
+
+
+    <script>
+        $(document).on("submit", '#submit_form', function () {
+            $('#submit_form').hide();
+            document.getElementById('registration_title').innerText = 'Registration Processing ...';
+            $('#choose_register').hide();
+
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,302 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    <div class="agileinfo-main about-top">
+        <div class="banner">
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <!-- navigation start here -->
+        <div class="top-nav">
+			<span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li><a href="{% url 'iq' %}"><i aria-hidden="true" class="glyphicon glyphicon-home"></i><span>Home</span></a></li>
+                <li><a><i class="glyphicon glyphicon-user"></i><span>Register</span></a></li>
+                <li><a class="active"><i class="glyphicon glyphicon-education"></i><span>Events</span></a></li>
+                <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a></li>
+                <li><a href="{% url 'iq_contact' %}"><i class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $( "span.menu" ).click(function() {
+                    $( "ul.w3l" ).slideToggle( 300, function() {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- //script-for-menu -->
+        </div>
+    </div>
+    <!-- //navigation end here -->
+    <!--- albums -->
+    <div class="albums agile-blog">
+        <div class="container">
+            <h2 class="agile-title">Our Events</h2>
+            <!-- Paper Presentation -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March, 11:30 AM Onwards </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'ppt' %}" class="wthree-almub wthree-almub_ppt">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'ppt' %}" style="color: #ffd400">Avalanche</a><br></h2>
+
+                    <p>Trigger your Brain Box!</p>
+                     <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" class="w3more" href="{% url 'ppt' %}"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Icon of IQ -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March & 24th March </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'icon' %}" class="wthree-almub wthree-almub_icon">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'icon' %}" style="color: #ffd400">Vector of IQ</a></h2>
+                    <p>Be the Change!</p>
+                       <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" href="{% url 'icon' %}" class="w3more"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Programming -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March & 24th March </h5>
+                </div>
+                <div class="albums1-right">
+                    <h4><a style="color: #00f9e8" href="{% url 'programming' %}" class="wthree-almub wthree-almub_programming">
+                    </a></h4>
+                </div>
+                <div class="albums1-left">
+                    <h2><a href="{% url 'programming' %}" style="color: #ffd400">Code Book</a></h2>
+                    <p> Run your infinite loop of creativity!</p>
+                       <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" href="{% url 'programming' %}" class="w3more"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Web Designing -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March & 24th March </h5>
+                </div>
+                <div class="albums1-right">
+                    <a href="{% url 'web_design' %}" class="wthree-almub wthree-almub_webdesign">
+                    </a>
+                </div>
+                <div class="albums1-left">
+                    <h2><a href="{% url 'web_design' %}" style="color: #ffd400">Whirlpool</a></h2>
+                    <p>Sprinkle the cascades of styles!</p>
+                       <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" class="w3more" href="{% url 'web_design' %}"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- MasterMind -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March & 24th March </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'master_mind' %}" class="wthree-almub wthree-almub_mastermind">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'master_mind' %}" style="color: #ffd400">Protocolist</a></h2>
+                    <p>Sharpen your Neural list! </p>
+                       <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" class="w3more" href="{% url 'master_mind' %}"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Quiz -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'quiz' %}" class="wthree-almub wthree-almub_quiz">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'quiz' %}" style="color: #ffd400">RSA</a></h2>
+                    <p>be Ready to Screw your Antenna!</p>
+                       <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" class="w3more" href="{% url 'quiz' %}"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <!-- Gaming -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March </h5>
+                </div>
+                <div class="albums1-right">
+                    <a href="{% url 'gaming' %}" class="wthree-almub wthree-almub_gaming">
+                    </a>
+                </div>
+                <div class="albums1-left">
+                    <h2><a href="{% url 'gaming' %}" style="color: #ffd400">Knapsacker</a></h2>
+                    <p>Pump your Adrenaline!</p>
+                       <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" class="w3more" href="{% url 'gaming' %}"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Poster Design -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'poster' %}" class="wthree-almub wthree-almub_poster">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'poster' %}" style="color: #ffd400">Secure Shell</a></h2>
+                    <p>Update your Gray matter!</p>
+                       <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" class="w3more" href="{% url 'poster' %}"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'poster' %}" class="wthree-almub wthree-almub_poster">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'poster' %}" style="color: #ffd400">Master Key</a></h2>
+                    <p>Why waiting? Unlock your potential stack!</p>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" class="w3more" href="{% url 'poster' %}"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Online Photography -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> Online </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'photography' %}" class="wthree-almub wthree-almub_photography">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'photography' %}" style="color: #ffd400">Stream Click</a></h2>
+                    <p> Engrave the Picasso in you!</p>
+                       <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" class="w3more" href="{% url 'photography' %}"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> Online </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'photography' %}" class="wthree-almub wthree-almub_photography">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'photography' %}" style="color: #ffd400">Router</a></h2>
+                    <p>Sail through the Silicon valley!</p>
+                       <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" class="w3more" href="{% url 'photography' %}"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'blind_coding' %}" class="wthree-almub wthree-almub_blind_coding">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'blind_coding' %}" style="color: #ffd400">Invisible Ink</a></h2>
+                    <p>Kick-start the magic in you!</p>
+                       <br>
+                    <a class="w3more" href="{% url 'blind_coding' %}"><i class="fa fa-mail-forward"
+                                                                         aria-hidden="true"></i> More</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Eagle Finger -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'eagle_finger' %}" class="wthree-almub wthree-almub_eagle_finger">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'eagle_finger' %}" style="color: #ffd400">Counter Mode</a></h2>
+                    <p>Showcase yourself to the Globe!</p>
+                       <br>
+                    <a class="w3more" href="{% url 'eagle_finger' %}"><i class="fa fa-mail-forward"
+                                                                         aria-hidden="true"></i> More</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Meme Creation -->
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March </h5>
+                </div>
+                <div class="albums1-right">
+                    <a href="{% url 'meme_creation' %}" class="wthree-almub wthree-almub_meme_creation">
+                    </a>
+                </div>
+                <div class="albums1-left">
+                    <h2><a href="{% url 'meme_creation' %}" style="color: #ffd400">Digital Signature</a></h2>
+                    <p>Stamp your Impressions!</p>
+                       <br>
+                    <a class="w3more" href="{% url 'meme_creation' %}"><i class="fa fa-mail-forward"
+                                                                          aria-hidden="true"></i> More</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-6 w3lsalbums-grid">
+                <div class="albums-w3top">
+                    <h5> 23th March </h5>
+                </div>
+                <div class="albums-left">
+                    <a href="{% url 'poster' %}" class="wthree-almub wthree-almub_poster">
+                    </a>
+                </div>
+                <div class="albums-right">
+                    <h2><a href="{% url 'poster' %}" style="color: #ffd400">Kerberos</a></h2>
+                    <p>Unleash the Kerberos in you!</p>
+                       <br>
+                    <h4 class="bounce bounceIn animated"><a style="color: #00f9e8" class="w3more" href="{% url 'poster' %}"><i class="fa fa-mail-forward" aria-hidden="true"></i> More</a></h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+
+
+
+
+        </div>
+    </div>
+{% endblock %}

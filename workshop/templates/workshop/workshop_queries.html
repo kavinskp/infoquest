@@ -1,0 +1,51 @@
+{% extends 'dashboard/dashboard_content.html' %}
+
+{% block title %}
+    Workshop Students
+{% endblock %}
+
+{% block rightPane %}
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-list"></i>
+                Queries @ Workshop
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="x_content">
+                    <form>{% csrf_token %}
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Name</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th>Query</th>
+                                <th>Time</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for student in list_of_students %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ student.name }}</td>
+                                    <td>{{ student.phone_number }}</td>
+                                    <td>{{ student.email }}</td>
+                                    <td>{{ student.query }}</td>
+                                    <td>{{ student.time_created }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+/*
+ * Start Bootstrap - Full (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+background: url("http://i.imgur.com/djQDavH.jpg") no-repeat center center fixed ;
+ background: url("file:///home/harsha/PycharmProjects/college_automation/dashboard/static/img/gct.jpg") no-repeat center center fixed ;
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+
+/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+
+
+
+.full {
+    background: url("gct60.jpg") no-repeat center center fixed ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.full {
+    background: url("gct60.jpg") no-repeat center center fixed ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}

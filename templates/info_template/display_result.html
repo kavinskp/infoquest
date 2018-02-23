@@ -1,0 +1,164 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    {% load static %}
+
+    <link href="{% static 'countdown/css/jquerysctipttop.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    {#    <link href="{% static 'countdown/css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>#}
+
+    <link href="{% static 'workshop_design/css/main_fit.css' %}" rel="stylesheet">
+    {#    <link href="{% static 'workshop_design/css/animate.css' %}" rel="stylesheet">#}
+    {#    <link href="{% static 'workshop_design/css/responsive.css' %}" rel="stylesheet">#}
+    <link rel="stylesheet" href="{% static 'mdbuser/style.css' %}">
+
+
+    <div class="agileinfo-main">
+        <div style="background: #07211f">
+            <div class="footer" style="background-color: rgba(8, 27, 25, 0.77)">
+                {% if list_of_students %}
+                    <div class="container table-responsive">
+                        {% if event_instance.timings %}
+                            <h2 align="center">Next Round Timings: <strong>
+                                {{ event_instance.timings }}
+                            </strong></h2>
+                        {% endif %}
+                        {% if event_instance.location %}
+                            <h2 align="center">Location: <strong>
+                                {{ event_instance.location }}
+                            </strong></h2>
+                        {% endif %}
+                        {% if event_instance.coordinator_name %}
+                            <h2 align="center">Coordinators: <strong>
+                                {{ event_instance.coordinator_name }}
+                            </strong></h2>
+                        {% endif %}
+                        {% if event_instance.coordinator_phone %}
+                            <h2 align="center">Mob. No: <strong>
+                                {{ event_instance.coordinator_phone }}
+                            </strong></h2>
+                        {% endif %}
+                        {% if event_instance.extra %}
+                            <h2 align="center"><strong>
+                                {{ event_instance.extra }}
+                            </strong></h2>
+                        {% endif %}
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>ID No</th>
+                                <th>Name</th>
+                                <th>College</th>
+                                <th>Email</th>
+                            </tr>
+                            </thead>
+                            {% for student in list_of_students %}
+                                <tr>
+                                    <td>{{ student.student.id_number }}</td>
+                                    <td>{{ student.student.name }}</td>
+                                    <td>{{ student.student.college }}</td>
+                                    <td>{{ student.student.email }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                {% else %}
+                    <h1 style="color: #19aaab;font-size: 38px" align="center">
+                        Event Results are being uploading ...
+                    </h1>
+                {% endif %}
+            </div>
+            {% if events_list %}
+                <br>
+                <br>
+                <form method="POST">{% csrf_token %}
+                    {% for event in events_list %}
+                        <div align="center">
+                            <button type="submit" class="btn1 btn-blue-grey" name="result_needed"
+                                    value="{{ event.id }}">{{ event.event.event_name }}&nbsp;&nbsp;>>
+                            </button>
+                        </div>
+                    {% endfor %}
+                </form>
+                <br>
+                <br>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <!-- Custom-JavaScript-File-Links -->
+    <script src="{% static 'countdown/js/jquery-1.12.3.min.js' %}"
+            integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{% static 'countdown/js/moment.js' %}"></script>
+    <script type="text/javascript" src="{% static 'countdown/js/moment-timezone-with-data.js' %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            function timer(settings) {
+                var config = {
+                    endDate: '2017-03-27 09:30',
+                    timeZone: 'Asia/kolkata',
+                    hours: $('#hours'),
+                    minutes: $('#minutes'),
+                    seconds: $('#seconds'),
+                    newSubMessage: 'and should be back online in a few minutes...'
+                };
+
+                function prependZero(number) {
+                    return number < 10 ? '0' + number : number;
+                }
+
+                $.extend(true, config, settings || {});
+                var currentTime = moment();
+                var endDate = moment.tz(config.endDate, config.timeZone);
+                var diffTime = endDate.valueOf() - currentTime.valueOf();
+                var duration = moment.duration(diffTime, 'milliseconds');
+                var days = duration.days();
+                var interval = 1000;
+                var subMessage = $('.sub-message');
+                var clock = $('.clock');
+                if (diffTime < 0) {
+                    endEvent(subMessage, config.newSubMessage, clock);
+                    document.getElementById('countdown_text').innerHTML = '<h1>Events are Online ...</h1>';
+                    document.getElementById('countdown').innerHTML = '';
+                    document.getElementById('result_info_text').innerHTML = '';
+                    return;
+                }
+                if (days > 0) {
+                    $('#days').text(prependZero(days));
+                    $('.days').css('display', 'inline-block');
+                }
+                var intervalID = setInterval(function () {
+                    duration = moment.duration(duration - interval, 'milliseconds');
+                    var hours = duration.hours(),
+                        minutes = duration.minutes(),
+                        seconds = duration.seconds();
+                    days = duration.days();
+                    if (hours <= 0 && minutes <= 0 && seconds <= 0 && days <= 0) {
+                        clearInterval(intervalID);
+                        endEvent(subMessage, config.newSubMessage, clock);
+                        window.location.reload();
+                    }
+                    if (days === 0) {
+                        //$('.days').hide();
+                    }
+                    $('#days').text(prependZero(days));
+                    config.hours.text(prependZero(hours));
+                    config.minutes.text(prependZero(minutes));
+                    config.seconds.text(prependZero(seconds));
+                }, interval);
+            }
+
+            function endEvent($el, newText, hideEl) {
+                $el.text(newText);
+                hideEl.hide();
+            }
+
+            timer();
+        });
+    </script>
+
+    <!-- //Custom-JavaScript-File-Links -->
+
+{% endblock %}

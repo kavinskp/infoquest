@@ -1,0 +1,102 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    {% load static %}
+    <div class="agileinfo-main about-top">
+        <div class="banner">
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <!-- navigation start here -->
+        <div class="top-nav">
+			<span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li><a href="{% url 'iq' %}"><i aria-hidden="true"
+                                                class="glyphicon glyphicon-home"></i><span>Home</span></a></li>
+                <li><a><i class="glyphicon glyphicon-user"></i><span>Register</span></a>
+                </li>
+                <li><a href="{% url 'iq_events' %}"><i class="glyphicon glyphicon-education"></i><span>Events</span></a>
+                </li>
+                <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
+                </li>
+                <li><a href="{% url 'iq_contact' %}"><i
+                        class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.w3l").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- //script-for-menu -->
+        </div>
+    </div>
+
+    <div class="single" style="background-color: #bdd8de">
+        <div class="container">
+            <div class="wthree_single_grid" style="margin: 10px">
+                <h2 style="font-size: 2.4em">Paper Exposit</h2>
+                <p style='font-size: 20px;color: #333333'>
+                    Cash prize will be Awarded
+                </p><br>
+                <ul>
+                    <b>Event in-charge</b>
+                    <li>
+                        <span class="fa fa-user" aria-hidden="true"></span>
+                        <a href="tel:+919597848009">Mukesh</a>
+                    </li>
+                    <li>
+                        <span class="fa fa-phone" aria-hidden="true"></span>
+                        <a href="tel:+919597848009">+91 9597848009</a>
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <div class="wthree_single_grid" style="margin: 10px">
+                <p style='font-size: 20px;color: #333333'>
+                    Provides an platform to showcase your innovative and fruitful ideas, thus bringing out your intellectual skills. So be prepared to pop out your knowledge in our premises.
+                </p><br>
+                <div><p style="font-size: 30px;color: #681e63;font-family: RobotoCondensed;">Mail your abstract to: <a style="font-size: 20px;color: #1300f7" href="mailto:ppt@infoquestgct.com">ppt@infoquestgct.com</a></p></div>
+                <h4>Abstract should contain team member details (Name, email & contact number).</h4>
+            </div>
+            <div class="wthree_single_grid1" style="margin: 40px">
+                <h2 style="font-size: 2em">Topics</h2>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>Internet of Things</li>
+                    <li>Cloud Computing</li>
+                    <li>Big Data</li>
+                    <li>Hadoop</li>
+                    <li>Data Analytics</li>
+                    <li>Data Mining and Data Warehousing</li>
+                    <li>Augumented Reality</li>
+                    <li>Network Security</li>
+                    <li>Any other innovative topics are welcomed</li>
+                </ul>
+            </div>
+            <div class="wthree_single_grid1" style="margin: 40px">
+                <h2 style="font-size: 2em">Rules and Regulations</h2>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>Entry Fee for paper presentation is <strong><i class="fa fa-inr"></i> 150 per head</strong>.</li>
+                    <li>Maximum of three participants per team.</li>
+                    <li>Team members may be of different colleges.</li>
+                    <li>Presentation can last upto a maximum of 10 minutes including the query session.</li>
+                    <li>Abstract must be in IEEE format and should not exceed more than one page.</li>
+                    <li>Abstract should be sent to <a href="mailto:ppt@infoquestgct.com">ppt@infoquestgct.com</a> as PDF along with the IEEE paper and team member details including Name, email, and contact number</li>
+                    <li>Selected teams should carry two hard copies and a soft copy of their paper on the day of event</li>
+                    <li>Selected participants will be intimated through mail.</li>
+                    <li>Deadline for abstract submission: <strong>24.03.2017</strong></li>
+                </ul>
+                <br>
+                <b>Note:</b> The decision of the Juries will be final and cannot be reverted.
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

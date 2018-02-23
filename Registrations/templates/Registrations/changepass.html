@@ -1,0 +1,52 @@
+{% extends 'dashboard/dashboard_content.html' %}
+{% block title %}GCT | Change Password{% endblock %}
+{% block rightPane %}
+    <div class="login">
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form method="post">
+              <h1>Change password</h1>
+              {% csrf_token %}
+                   <!-- <div>
+                        <input class="form-control" maxlength="256" name="email" type="text" placeholder="Email" required />
+                    </div>-->
+
+                    <div>
+                        <input class="form-control" name="oldpass" type="password" placeholder="Old Password" required />
+                    </div>
+                    <div>
+                        <input class="form-control" name="newpass" type="password" placeholder="New Password" required />
+                    </div>
+                    <div>
+                        <input class="form-control" name="newpass_again" type="password" placeholder="New Password(again)" required />
+                    </div>
+              <div>
+                <button type="submit" class="btn btn-success"  name="login" value="login">Change!</button>
+
+              </div>
+            </form>
+          </section>
+             <!-- <div class="clearfix"></div>
+
+              <div class="separator">
+
+                <br />
+
+                <div>
+                  {% load static %}
+                    <img src="{% static "img/gctb.png" %}" width="40" height="48" alt="gct image"/>
+                    <span><h1> GCT Portal</h1></span>
+                  <p>©2016 All Rights Reserved. GCT PORTAL - a project by automators!</p>
+                </div>
+              </div>
+-->
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

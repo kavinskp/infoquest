@@ -1,0 +1,333 @@
+.waves-effect1 {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 1;
+}
+
+.btn-rounded {
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+}
+
+.btn1 {
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 2px;
+    border: 0;
+    color: #fff !important;
+    margin: 6px;
+    /* white-space: normal!important; */
+}
+
+.btn1-sm {
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+    border-radius: 2px;
+    border: 0;
+    color: #fff !important;
+    /* margin: 6px; */
+    /* white-space: normal!important; */
+}
+
+.btn1-lg {
+    font-size: 4.5rem;
+    padding: 1rem 6rem;
+    border-radius: 1px;
+    border: 0;
+    color: #fff !important;
+    margin:10px;
+    /* white-space: normal!important; */
+}
+
+.btn-dark-green {
+    background: #007E33;
+}
+
+.btn-dark-green:hover {
+    background-color: #00983d !important;
+}
+
+.btn-elegant {
+    background: #2E2E2E;
+}
+
+.btn-elegant:hover {
+    background-color: #3b3b3b !important;
+}
+
+.btn-unique {
+    background: #1C2331;
+}
+
+.btn-unique:hover {
+    background-color: #252f41 !important;
+}
+
+.btn-pink {
+    background: #e91e63;
+}
+
+.btn-pink:hover {
+    background-color: #eb3573 !important;
+}
+
+.btn-purple {
+    background: #4a148c;
+}
+
+.btn-purple:hover {
+    background-color: #5617a2 !important;
+}
+
+.btn-deep-purple {
+    background: #311b92;
+}
+
+.btn-deep-purple:hover {
+    background-color: #381fa8 !important;
+}
+
+.btn-indigo {
+    background: #1a237e;
+}
+
+.btn-indigo:hover {
+    background-color: #1e2993 !important;
+}
+
+.btn-cyan {
+    background: #00acc1;
+}
+
+.btn-cyan:hover {
+    background-color: #00c3db !important;
+}
+
+.btn-light-green {
+    background: #7cb342;
+}
+
+.btn-light-green:hover {
+    background-color: #89be50 !important;
+}
+
+.btn-lime {
+    background: #afb42b;
+}
+
+.btn-lime:hover {
+    background-color: #c3c930 !important;
+}
+
+.btn-yellow {
+    background: #fbc02d;
+}
+
+.btn-yellow:hover {
+    background-color: #fbc846 !important;
+}
+
+.btn-amber {
+    background: #ff6f00;
+}
+
+.btn-amber:hover {
+    background-color: #ff7d1a !important;
+}
+
+.btn-orange {
+    background: #e65100;
+}
+
+.btn-orange:hover {
+    background-color: #ff5a01 !important;
+}
+
+.btn-deep-orange {
+    background: #bf360c;
+}
+
+.btn-deep-orange:hover {
+    background-color: #d73d0e !important;
+}
+
+.btn-brown {
+    background: #6d4c41;
+}
+
+.btn-brown:hover {
+    background-color: #7d574b !important;
+}
+
+.btn-blue-grey {
+    background: #607d8b;
+}
+
+.btn-blue-grey:hover {
+    background-color: #6b8a99 !important;
+}
+
+.btn-mdb {
+    background: #45526E;
+}
+
+.btn-mdb:hover {
+    background-color: #4f5e7e !important;
+}
+
+.btn1-primary {
+    background: #4285F4;
+}
+
+.btn1-primary:hover {
+    background-color: #5a95f5 !important;
+}
+
+.btn1-default {
+    background: #2BBBAD;
+}
+
+.btn1-default:hover {
+    background-color: #30cfc0 !important;
+}
+
+.btn1-secondary {
+    background-color: #a6c;
+}
+
+.btn1-secondary:hover {
+    background-color: #b579d2 !important;
+}
+
+.btn1-success {
+    background: #00C851;
+}
+
+.btn1-success:hover {
+    background-color: #00d255 !important;
+}
+
+.btn1-info {
+    background: #33b5e5;
+}
+
+.btn1-info:hover {
+    background-color: #4abde8 !important;
+}
+
+.btn1-warning {
+    background: #F80;
+}
+
+.btn1-warning:hover {
+    background-color: #ff961f !important;
+}
+
+.btn1-danger {
+    background: #C00;
+}
+
+.btn1-danger:hover {
+    background-color: #db0000 !important;
+}
+
+.switch label input[type="checkbox"]:checked + .lever {
+    background-color: #dccfe2;
+}
+
+.switch label .lever {
+    position: relative;
+    width: 40px;
+    height: 15px;
+    background-color: #818181;
+    border-radius: 15px;
+    transition: background .3s ease;
+    margin: 0 16px;
+}
+
+.switch label .lever, .switch label .lever::after {
+    content: "";
+    display: inline-block;
+}
+
+.btn .fa, .btn-floating, .picker__box, .product-table td, .switch label .lever {
+    vertical-align: middle;
+}
+
+.switch, .switch * {
+    -khtml-user-select: none;
+}
+
+.pswp__container, .pswp__counter, .pswp__img, .pswp__share-modal, .select-wrapper input.select-dropdown:disabled, .switch, .switch * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.switch label {
+    cursor: pointer;
+}
+
+ /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

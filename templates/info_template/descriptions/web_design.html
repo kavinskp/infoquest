@@ -1,0 +1,94 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    {% load static %}
+    <div class="agileinfo-main about-top">
+        <div class="banner">
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <!-- navigation start here -->
+        <div class="top-nav">
+			<span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li><a href="{% url 'iq' %}"><i aria-hidden="true"
+                                                class="glyphicon glyphicon-home"></i><span>Home</span></a></li>
+                <li><a><i class="glyphicon glyphicon-user"></i><span>Register</span></a>
+                </li>
+                <li><a href="{% url 'iq_events' %}"><i class="glyphicon glyphicon-education"></i><span>Events</span></a>
+                </li>
+                <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
+                </li>
+                <li><a href="{% url 'iq_contact' %}"><i
+                        class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.w3l").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- //script-for-menu -->
+        </div>
+    </div>
+
+    <div class="single" style="background-color: #bdd8de">
+        <div class="container">
+            <div class="wthree_single_grid" style="margin: 10px">
+                <h2 style="font-size: 2.4em">Webaholic</h2>
+                <p style='font-size: 20px;color: #333333'>
+                    Cash prize will be Awarded
+                </p><br>
+                <h3 style="font-size: 2.4em">Round 1 - Open timings on 27th March <span style="color: #007b70">(Duration - 60 mins)</span></h3><br>
+                <h3 style="font-size: 2.4em">Round 2 - 28th March for shortlisted candidates <span style="color: #007b70">(Duration - 2 hours)</span></h3><br><br>
+            </div>
+            <div class="wthree_single_grid1" style="margin: 40px">
+                <h2 style="font-size: 2em">Description</h2>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>Webaholic is an self esteemed event that focuses on future trend ‘WEB DEVELOPMENT’ and its associated frameworks.</li>
+                </ul>
+                <br>
+                <br>
+                <h2 style="font-size: 2em">Round 1</h2><br>
+                <h2 style="font-size: 1.5em">Web related MCQ</h2>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>45 multiple choice questions on web development languages and frameworks.</li>
+                    <li>All the current trending frameworks and UI development libraries are included.</li>
+                </ul>
+                <br>
+                <br>
+                <h2 style="font-size: 2em">Round 2</h2><br>
+                <h2 style="font-size: 1.5em">Full stack web project based on requirements provided.</h2>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>An end to end Full stack web application must be built.</li>
+                    <li>Make the Application serve the functionality.</li>
+                </ul>
+                <br>
+                <br>
+                <h2 style="font-size: 2em">Instructions</h2>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>Individual participation.</li>
+                    <li>By keeping your pages simple, your website will be easier to use.The Webpages Must be as simple as possible. Functionality completeness gets more credit.</li>
+                    <li>The overall look and feel of your site must be in a way easily understandable to users.</li>
+                    <li>Pages should be well-organized with a top-down design so that visitors can easily browse through the different sections of your site.</li>
+                    <li>When choosing colors, use a consistent palette of colors that don't clash and make sure there is a strong contrast between the text and the background.</li>
+                    <li>Make sure to check your website in multiple browsers to make sure everything appears correctly. It is best to catch problems ahead of time instead of relying on complaints from your visitors.</li>
+                    <li>Check your websites on a regular basis for typos, broken links, and images that do not load correctly.</li>
+                    <li>Whether it's HTML or PHP, Code on your Own.</li>
+                </ul>
+                <br>
+                <b>Note:</b> Only event coordinators make final judgement, and there will not be any changes.
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

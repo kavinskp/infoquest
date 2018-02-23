@@ -1,0 +1,21 @@
+{% extends "dashboard/dashboard_header.html" %}
+
+{% block content %}
+    {% include "dashboard/dashboard_sidebar.html" %}
+    {% include "dashboard/dashboard_topnavigation.html" %}
+    <div class="right_col" role="main" style="min-height: 812px;">
+        <div class="">
+            {% block rightPane %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+    <footer>
+        <div class="pull-right">
+            Developers
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+
+{% endblock %}

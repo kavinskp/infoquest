@@ -1,0 +1,89 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    {% load static %}
+    <div class="agileinfo-main about-top">
+        <div class="banner">
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <!-- navigation start here -->
+        <div class="top-nav">
+			<span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li><a href="{% url 'iq' %}"><i aria-hidden="true"
+                                                class="glyphicon glyphicon-home"></i><span>Home</span></a></li>
+                <li><a><i class="glyphicon glyphicon-user"></i><span>Register</span></a>
+                </li>
+                <li><a href="{% url 'iq_events' %}"><i class="glyphicon glyphicon-education"></i><span>Events</span></a>
+                </li>
+                <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
+                </li>
+                <li><a href="{% url 'iq_contact' %}"><i
+                        class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.w3l").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- //script-for-menu -->
+        </div>
+    </div>
+
+    <div class="single" style="background-color: #bdd8de">
+        <div class="container">
+            <div class="wthree_single_grid" style="margin: 10px">
+                <h2 style="font-size: 2.4em">Gaming</h2>
+                <p style='font-size: 20px;color: #333333'>
+                    Cash prize will be Awarded
+                </p><br>
+                <h3 style="font-size: 2.4em">Open timings on 27th March</h3><br>
+            </div>
+            <div class="wthree_single_grid1" style="margin: 40px">
+                <h2 style="font-size: 2em">Rules and Regulations</h2>
+                <br>
+                <h3>NFS - Most Wanted</h3>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>Entry Fee –Rs.20 per person</li>
+                    <li>Knockout matches take place until the players reach the final round.</li>
+                </ul>
+                <p style="font-size: 1.3em;color: #172023"><strong>27.03.17:</strong> At premliminary level, the match happens among 4 members and the best among the four  will be shortlisted at the end of every prelimimary match.</p>
+                <p style="font-size: 1.3em;color: #172023"><strong>28.03.17:</strong> Finals will be conducted for shortlisted players.</p>
+                <br>
+                <br>
+                <h3>FIFA</h3>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>Entry Fee –Rs.20 per person</li>
+                    <li>Keyboards will be provided. But if you require a controller, please bring one on your own. No
+                        controller will be provided by the organizers.
+                    </li>
+                    <li>Custom settings will be provided by the organizers.</li>
+                </ul>
+                <p style="font-size: 1.3em;color: #172023"><strong>27.03.17:</strong> The slots are fixed randomly and will follow a knockout match scheme.</p>
+                <p style="font-size: 1.3em;color: #172023"><strong>28.03.17:</strong> Finals will be conducted for shortlisted candidates.</p>
+                <br>
+                <br>
+                <h3>Mini Milita</h3>
+                <ul style="font-size: 1.3em;">
+                    <br>
+                    <li>Entry Fee –Rs.20 per person</li>
+                    <li>Bring your own smartphone. The app will be provided by the organizers.</li>
+                </ul>
+                <p style="font-size: 1.3em;color: #172023"><strong>27.03.17:</strong> It will be a solo match and the player with maximum points in a round progresses to the next round.</p>
+                <p style="font-size: 1.3em;color: #172023"><strong>28.03.17:</strong> Finals will be conducted for shortlisted players.</p>
+                <br>
+                <b>Note:</b> Only event coordinators make final judgement, and there will not be any changes.
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
