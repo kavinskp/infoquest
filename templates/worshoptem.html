@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    {% load static %}
+    {% include 'extra_resources.html' %}
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>IQ WORKSHOP</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="{% static 'custom.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap1.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'workshop/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'workshop/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'workshop/css/vendor.css' %}">
+
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'workshop/js/modernizr.js' %}"></script>
+    <script src="{% static 'workshop/js/pace.min.js' %}"></script>
+
+
+    <!-- favicons
+     ================================================== -->
+    <link rel="icon" type="image/png" href="{% static 'workshop/favicon.png' %}">
+    <style>
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            background-color: #FF0077;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-image: -webkit-gradient(linear,
+            left bottom,
+            left top,
+            color-stop(0.44, rgb(255, 0, 199)),
+            color-stop(0.72, rgb(73, 125, 189)),
+            color-stop(0.86, rgb(28, 58, 148)));
+        }
+
+    </style>
+</head>
+
+<body id="top">
+
+<!-- header
+================================================== -->
+<header>
+    <div class="row">
+
+        <div class="top-bar">
+            <a class="menu-toggle" href="#"><span>Menu</span></a>
+
+            <div class="headerLogoAlign">
+                WORKSHOP
+            </div>
+
+            <nav id="main-nav-wrap">
+                <ul class="main-navigation">
+                    <li class="current"><a class="smoothscroll" href="#intro" title="">Home</a></li>
+                    <li><a class="smoothscroll" href="#about" title="">About</a></li>
+                    <li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
+                </ul>
+            </nav>
+        </div> <!-- /top-bar -->
+
+    </div> <!-- /row -->
+</header> <!-- /header -->
+
+<!-- intro section
+================================================== -->
+<section id="intro">
+
+    <div class="intro-overlay"></div>
+
+    <div class="intro-content">
+        <div class="row">
+
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-1 col-sm-3 col-xs-12">
+                        <div class="">
+                            <img src="{% static 'images/cropped_gct.png' %}" height="150"
+                                 width="150">
+                        </div>
+
+                    </div>
+                    <div class="col-md-11 col-sm-9 col-xs-12" style="line-height: 300%">
+                        <div class="college_tag" style="text-align: center">Government College of Technology</div>
+                        <div class="city_tag" style="text-align: center ">Coimbatore - 13</div>
+                    </div>
+                </div>
+
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-1 col-sm-3 col-xs-12">
+
+                        </div>
+                        <div class="col-md-11 col-sm-9 col-xs-12" style="line-height: 450%">
+                            <h2 class="department_tag col-md-12">Department of Computer Science and Engineering</h2>
+                        </div>
+                        <a class="button stroke smoothscroll" href="#services" title="">More About</a>
+                    </div>
+
+
+                </div>
+            </div> <!-- /intro-content -->
+
+            <ul class="intro-social">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul> <!-- /intro-social -->
+
+</section> <!-- /intro -->
+
+
+<!-- services Section
+================================================== -->
+<section id="services">
+
+    <div class="overlay"></div>
+
+    <div class="row section-intro">
+        <div class="col-twelve">
+
+            <h5>Services</h5>
+            <h1>What Can I Do For You?</h1>
+
+            <p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi
+                aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+
+        </div>
+    </div> <!-- /section-intro -->
+
+    <div class="row services-content">
+
+        <div id="owl-slider" class="owl-carousel services-list">
+
+            <div class="service">
+
+                <span class="icon"><i class="icon-earth"></i></span>
+
+                <div class="service-content">
+
+                    <h3>Webdesign</h3>
+
+                    <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+                        aspernatur aut odit aut fugit.
+                    </p>
+
+                </div>
+
+            </div> <!-- /service -->
+
+            <div class="service">
+
+                <span class="icon"><i class="icon-window"></i></span>
+
+                <div class="service-content">
+
+                    <h3>Web Development</h3>
+
+                    <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+                        aspernatur aut odit aut fugit.
+                    </p>
+
+                </div>
+
+            </div> <!-- /service -->
+
+            <div class="service">
+
+                <span class="icon"><i class="icon-paint-brush"></i></span>
+
+                <div class="service-content">
+
+                    <h3>Branding</h3>
+
+                    <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+                        aspernatur aut odit aut fugit.
+                    </p>
+
+                </div>
+
+            </div> <!-- /service -->
+
+            <div class="service">
+
+                <span class="icon"><i class="icon-toggles"></i></span>
+
+                <div class="service-content">
+
+                    <h3>UI/UX Design</h3>
+
+                    <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+                        aspernatur aut odit aut fugit.
+                    </p>
+
+                </div>
+
+            </div> <!-- /service -->
+
+            <div class="service">
+
+                <span class="icon"><i class="icon-image"></i></span>
+
+                <div class="service-content">
+
+                    <h3>Graphics Design</h3>
+
+                    <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+                        aspernatur aut odit aut fugit.
+                    </p>
+
+                </div>
+
+            </div> <!-- /service -->
+
+            <div class="service">
+
+                <span class="icon"><i class="icon-chat"></i></span>
+
+                <div class="service-content">
+
+                    <h3>Consultancy</h3>
+
+                    <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+                        aspernatur aut odit aut fugit.
+                    </p>
+
+                </div>
+
+            </div> <!-- /service -->
+
+        </div> <!-- /services-list -->
+
+    </div> <!-- /services-content -->
+
+</section> <!-- /services -->
+
+
+<!-- stats Section
+================================================== -->
+
+
+<!-- contact
+================================================== -->
+<section id="contact">
+
+    <div class="row section-intro">
+        <div class="col-twelve">
+
+            <h5>Contact</h5>
+            <h1>I'd Love To Hear From You.</h1>
+
+
+        </div>
+    </div> <!-- /section-intro -->
+
+    <div class="row contact-form">
+
+        <div class="col-twelve">
+
+            <!-- form -->
+            <form name="contactForm" id="contactForm" method="post" action="">
+                <fieldset>
+
+                    <div class="form-field">
+                        <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2"
+                               required="">
+                    </div>
+                    <div class="form-field">
+                        <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value=""
+                               required="">
+                    </div>
+                    <div class="form-field">
+                        <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
+                    </div>
+                    <div class="form-field">
+                        <textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50"
+                                  required=""></textarea>
+                    </div>
+                    <div class="form-field">
+                        <button class="submitform">Submit</button>
+                        <div id="submit-loader">
+                            <div class="text-loader">Sending...</div>
+                            <div class="s-loader">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form> <!-- Form End -->
+
+            <!-- contact-warning -->
+            <div id="message-warning">
+            </div>
+            <!-- contact-success -->
+            <div id="message-success">
+                <i class="fa fa-check"></i>Your message was sent, thank you!<br>
+            </div>
+
+        </div> <!-- /col-twelve -->
+
+    </div> <!-- /contact-form -->
+
+    <div class="row contact-info">
+
+        <div class="col-four tab-full">
+
+            <div class="icon">
+                <i class="icon-pin"></i>
+            </div>
+
+            <h5>Where to find us</h5>
+
+            <p>
+                1600 Amphitheatre Parkway<br>
+                Mountain View, CA<br>
+                94043 US
+            </p>
+
+        </div>
+
+        <div class="col-four tab-full collapse">
+
+            <div class="icon">
+                <i class="icon-mail"></i>
+            </div>
+
+            <h5>Email Us At</h5>
+
+            <p>workshop@infoquestgct.com
+            </p>
+
+        </div>
+
+        <div class="col-four tab-full">
+
+            <div class="icon">
+                <i class="icon-phone"></i>
+            </div>
+
+            <h5>Call Us At</h5>
+
+            <p>Phone: (+63) 555 1212<br>
+                Mobile: (+63) 555 0100<br>
+                Fax: (+63) 555 0101
+            </p>
+
+        </div>
+
+    </div> <!-- /contact-info -->
+
+</section> <!-- /contact -->
+
+
+<!-- footer
+================================================== -->
+
+<footer>
+    <div class="row">
+
+        <div class="col-six tab-full pull-right social">
+
+            <ul class="footer-social">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+
+        </div>
+
+        <div class="col-six tab-full">
+            <div class="copyright">
+                <span>Â©2017 All Rights Reserved. GCT ULTRONS WORKSHOP</span>
+            </div>
+        </div>
+
+        <div id="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+        </div>
+
+    </div> <!-- /row -->
+</footer>
+
+<div id="preloader">
+    <div id="loader"></div>
+</div>
+
+<!-- Java Script
+================================================== -->
+<script src="{% static 'workshop/js/jquery-2.1.3.min.js' %}"></script>
+<script src="{% static 'workshop/js/plugins.js' %}"></script>
+<script src="{% static 'workshop/js/main.js' %}"></script>
+
+</body>
+
+</html>

@@ -28,6 +28,7 @@ def sendEmail(datas):
               'Workshop Data Science in Python\n' \
               'Workshop Date: 12.03.2018\n' \
               'Time: 09:00 AM' \
+              'Please bring your screen shot of your payment page if you have paid amount through online registration '\
               '\n\nClick the following link to confirm your registration ' + link + \
               '\n\n' \
               'Now InfoQuest on youtube!' \

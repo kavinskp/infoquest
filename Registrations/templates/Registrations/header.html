@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{% endblock %}</title>
+{% load staticfiles %}
+
+<link rel="stylesheet" href="{% static 'mdbuser/style.css' %}">
+
+<link rel="stylesheet" href="{% static "dashboard/vendors/bootstrap/dist/css/bootstrap.min.css" %}">
+<link rel="stylesheet" href="{% static "dashboard/vendors/font-awesome/css/font-awesome.min.css" %}">
+{#<link rel="stylesheet" href="https://colorlib.com/polygon/gentelella/css/animate.min.css">#}
+<link rel="stylesheet" href="{% static "dashboard/build/css/custom.min.css" %}">
+<link rel="stylesheet" href="{% static "" %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style type="text/css">
+	.bs-example{
+		margin: 20px;
+	}
+    .center{
+        float:none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+{% block head_block %}
+{% endblock %}
+</head>
+<body>
+{% block content %}
+{% endblock %}
+</body>
+</html>

@@ -166,6 +166,14 @@
                                     {% endif %}
                                 </td>
                             </tr>
+                         <tr>
+                                <th style="color: #a951ed"><i class="fa fa-university"></i>&nbsp;&nbsp;
+                                    Transaction ID
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {{ student.transaction_id }}
+                                </td>
+                            </tr>
                         </table>
                         <form method="POST">
                             {% csrf_token %}

@@ -81,32 +81,42 @@ def quiz(request):
     return render(request, 'info_template/descriptions/quiz.html')
 
 
-def creative_eye(request):
-    return render(request, 'info_template/descriptions/creative_eye.html')
+# def creative_eye(request):
+#     return render(request, 'info_template/descriptions/creative_eye.html')
 
 
 def blind_coding(request):
-    return render(request, 'info_template/descriptions/creative_eye/blind_coding.html')
+    return render(request,
+                  'info_template/descriptions/blind_coding.html')
 
 
 def eagle_finger(request):
-    return render(request, 'info_template/descriptions/creative_eye/eagle_finger.html')
+    return render(request,
+                  'info_template/descriptions/eagle_finger.html')
 
 
 def meme_creation(request):
-    return render(request, 'info_template/descriptions/creative_eye/meme_creation.html')
+    return render(request,
+                  'info_template/descriptions/meme_creation.html')
 
 
-def connections(request):
-    return render(request, 'info_template/descriptions/creative_eye/connections.html')
+def marketing(request):
+    return render(request,
+                  'info_template/descriptions/marketing.html')
 
+def database(request):
+    return render(request,
+                  'info_template/descriptions/database.html')
+def datastructure(request):
+    return render(request,
+                  'info_template/descriptions/datastructure.html')
 
 def gaming(request):
     return render(request, 'info_template/descriptions/gaming.html')
 
 
-def poster(request):
-    return render(request, 'info_template/descriptions/poster.html')
+def debugging(request):
+    return render(request, 'info_template/descriptions/debugging.html')
 
 
 def photography(request):
@@ -132,6 +142,11 @@ def contact(request):
             return render(request, 'info_template/contact.html', {'mail': 'true'})
 
     return render(request, 'info_template/contact.html')
+
+
+def payment(request):
+
+    return render(request, 'info_template/payment.html')
 
 
 def register(request):

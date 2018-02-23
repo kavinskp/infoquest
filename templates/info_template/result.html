@@ -1,0 +1,182 @@
+{% extends 'info_template/infoquest_header.html' %}
+
+{% block body_content %}
+    {% load static %}
+
+    <link href="{% static 'countdown/css/jquerysctipttop.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    {#    <link href="{% static 'countdown/css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>#}
+
+    <link href="{% static 'workshop_design/css/main_fit.css' %}" rel="stylesheet">
+    {#    <link href="{% static 'workshop_design/css/animate.css' %}" rel="stylesheet">#}
+    {#    <link href="{% static 'workshop_design/css/responsive.css' %}" rel="stylesheet">#}
+    <link rel="stylesheet" href="{% static 'mdbuser/style.css' %}">
+
+    <div class="agileinfo-main about-top">
+        <div class="banner">
+        </div>
+        {% include 'info_template/links.html' %}
+
+        <!-- navigation start here -->
+        <div class="top-nav">
+			<span class="menu">
+                Menu&nbsp;
+                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+            <ul class="w3l">
+                <li><a href="{% url 'iq' %}"><i aria-hidden="true"
+                                                class="glyphicon glyphicon-home"></i><span>Home</span></a></li>
+                <li><a><i class="glyphicon glyphicon-user"></i><span>Register</span></a>
+                </li>
+                <li><a href="{% url 'iq_events' %}"><i class="glyphicon glyphicon-education"></i><span>Events</span></a>
+                </li>
+                <li><a class="active"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
+                </li>
+                <li><a href="{% url 'iq_contact' %}"><i
+                        class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.w3l").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- //script-for-menu -->
+        </div>
+    </div>
+
+    <div class="agileinfo-main">
+        <div style="background: #07211f">
+            {% if events_list %}
+                <br>
+                <br>
+                <form method="POST">{% csrf_token %}
+                    {% for event in events_list %}
+                        <div align="center">
+                            <button type="submit" class="btn1 btn-blue-grey" name="result_needed"
+                                    value="{{ event.id }}">{{ event.event.event_name }}&nbsp;&nbsp;>>
+                            </button>
+                        </div>
+                    {% endfor %}
+                </form>
+                <br>
+                <br>
+            {% endif %}
+        </div>
+        <div class="wave-bg">
+
+            <div class="footer" style="background-color: rgba(8, 27, 25, 0.77)">
+                <div class="container">
+                    <div class="banner-w3bottom-row">
+                        <div class="col-md-12">
+                            {% if not events_list %}
+                                <h1 id="result_info_text" style="color: #19aaab;font-size: 38px" align="center">
+                                    Event Results will be posted as soon as rounds are over
+                                </h1><br>
+                            {% endif %}
+                            <h4 style="color: #5bb2bf" id="countdown_text" align="center">EVENTS STARTS IN .....</h4>
+                            <br>
+                        </div>
+                        <div class="col-md-12">
+                            <ul id="countdown">
+                                <li>
+                                    <span class="days time-font" id="days"></span>
+                                    <p>days </p>
+                                </li>
+                                <li>
+                                    <span class="hours time-font" id="hours"></span>
+                                    <p class="">hours </p>
+                                </li>
+                                <li>
+                                    <span class="minutes time-font" id="minutes"></span>
+                                    <p class="">minutes</p>
+                                </li>
+                                <li>
+                                    <span class="seconds time-font" id="seconds"></span>
+                                    <p class="">seconds</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Custom-JavaScript-File-Links -->
+    <script src="{% static 'countdown/js/jquery-1.12.3.min.js' %}"
+            integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{% static 'countdown/js/moment.js' %}"></script>
+    <script type="text/javascript" src="{% static 'countdown/js/moment-timezone-with-data.js' %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            function timer(settings) {
+                var config = {
+                    endDate: '2018-03-23 09:30',
+                    timeZone: 'Asia/kolkata',
+                    hours: $('#hours'),
+                    minutes: $('#minutes'),
+                    seconds: $('#seconds'),
+                    newSubMessage: 'and should be back online in a few minutes...'
+                };
+
+                function prependZero(number) {
+                    return number < 10 ? '0' + number : number;
+                }
+
+                $.extend(true, config, settings || {});
+                var currentTime = moment();
+                var endDate = moment.tz(config.endDate, config.timeZone);
+                var diffTime = endDate.valueOf() - currentTime.valueOf();
+                var duration = moment.duration(diffTime, 'milliseconds');
+                var days = duration.days();
+                var interval = 1000;
+                var subMessage = $('.sub-message');
+                var clock = $('.clock');
+                if (diffTime < 0) {
+                    endEvent(subMessage, config.newSubMessage, clock);
+                    document.getElementById('countdown_text').innerHTML = '<h1>Events are Online ...</h1>';
+                    document.getElementById('countdown').innerHTML = '';
+                    document.getElementById('result_info_text').innerHTML = '';
+                    return;
+                }
+                if (days > 0) {
+                    $('#days').text(prependZero(days));
+                    $('.days').css('display', 'inline-block');
+                }
+                var intervalID = setInterval(function () {
+                    duration = moment.duration(duration - interval, 'milliseconds');
+                    var hours = duration.hours(),
+                        minutes = duration.minutes(),
+                        seconds = duration.seconds();
+                    days = duration.days();
+                    if (hours <= 0 && minutes <= 0 && seconds <= 0 && days <= 0) {
+                        clearInterval(intervalID);
+                        endEvent(subMessage, config.newSubMessage, clock);
+                        window.location.reload();
+                    }
+                    if (days === 0) {
+                        //$('.days').hide();
+                    }
+                    $('#days').text(prependZero(days));
+                    config.hours.text(prependZero(hours));
+                    config.minutes.text(prependZero(minutes));
+                    config.seconds.text(prependZero(seconds));
+                }, interval);
+            }
+
+            function endEvent($el, newText, hideEl) {
+                $el.text(newText);
+                hideEl.hide();
+            }
+
+            timer();
+        });
+    </script>
+
+    <!-- //Custom-JavaScript-File-Links -->
+
+{% endblock %}

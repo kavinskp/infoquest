@@ -1,0 +1,236 @@
+{% extends 'dashboard/dashboard_content.html' %}
+
+{% block head_block %}
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+    <script src="http://1000hz.github.io/bootstrap-validator/dist/validator.min.js"></script>
+{% endblock %}
+
+{% block title %}
+    Update Information
+{% endblock %}
+
+{% block rightPane %}
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-plus-circle"></i>
+                Update Section Infoquest
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+            </div>
+            <div class="x_content">
+                <form class="form-horizontal form-label-left" data-toggle="validator" role="form" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="student" value="{{ selected_student.id }}">
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Name <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" name="name" placeholder="Enter your name"
+                                   data-error="Enter your name" value="{{ selected_student.name }}" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Gender <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="btn-group" data-toggle="buttons">
+                                <input name="gender" value="M" data-parsley-multiple="gender"
+                                       data-parsley-id="12"
+                                       type="radio" data-error="Choose your gender"
+                                        {% if selected_student.gender == 'M' %}
+                                       checked
+                                        {% endif %}
+                                       required> &nbsp; Male &nbsp;
+
+                                <input name="gender" value="F" data-parsley-multiple="gender" type="radio"
+                                        {% if selected_student.gender == 'F' %}
+                                       checked
+                                        {% endif %}
+                                >
+                                Female
+
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Registration <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="btn-group" data-toggle="buttons">
+                                <input name="register_type" value="E" data-parsley-multiple="register_type"
+                                       data-parsley-id="12"
+                                       type="radio" data-error="Choose registration type" required
+                                        {% if selected_student.registration_type == 'E' %}
+                                       checked
+                                        {% endif %}
+                                > &nbsp; Events &nbsp;
+                                <input name="register_type" value="P" data-parsley-multiple="register_type" type="radio"
+                                        {% if selected_student.registration_type == 'P' %}
+                                       checked
+                                        {% endif %}
+                                >
+                                PPT
+                                <input name="register_type" value="B" data-parsley-multiple="register_type" type="radio"
+                                        {% if selected_student.registration_type == 'B' %}
+                                       checked
+                                        {% endif %}
+                                >
+                                Both
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email"> Email <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="email" class="form-control" placeholder="Email"
+                                   data-error="Enter a valid email" name="email" readonly
+                                   value="{{ selected_student.email }}"
+                                   required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number"> Mobile Number <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" pattern="^[0-9]+$" maxlength="10" minlength="10" class="form-control"
+                                   name="mobile"
+                                   data-error="Enter a valid mobile number"
+                                   placeholder="Enter your Mobile number" value="{{ selected_student.phone_number }}"
+                                   required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Department <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" name="department"
+                                   data-error="Enter your Department name" value="{{ selected_student.department }}"
+                                   placeholder="Enter your Department name" required type="text">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> College <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" name="college"
+                                   data-error="Enter your college name" value="{{ selected_student.college }}"
+                                   placeholder="Enter your College name" required type="text">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Location <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" name="location"
+                                   data-error="Enter location of your college" value="{{ selected_student.location }}"
+                                   placeholder="Enter your College location" required type="text">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Year of Study <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select name="year" class="form-control col-md-7 col-xs-12"
+                                    data-error="Choose year of study" required>
+                                <option disabled selected value=""> Choose any one</option>
+                                {% if selected_student.year_of_study == '1' %}
+                                    <option value="1" selected>1st Year</option>
+                                {% else %}
+                                    <option value="1">1st Year</option>
+                                {% endif %}
+                                {% if selected_student.year_of_study == '2' %}
+                                    <option value="2" selected>2nd Year</option>
+                                {% else %}
+                                    <option value="2">2nd Year</option>
+                                {% endif %}
+                                {% if selected_student.year_of_study == '3' %}
+                                    <option value="3" selected>3rd Year</option>
+                                {% else %}
+                                    <option value="3">3rd Year</option>
+                                {% endif %}
+                                {% if selected_student.year_of_study == '4' %}
+                                    <option value="4" selected>4th Year</option>
+                                {% else %}
+                                    <option value="4">4th Year</option>
+                                {% endif %}
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Accommodation Needed
+                            <span
+                                    class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="btn-group" data-toggle="buttons">
+                                <input name="accommodation" value="Y" data-parsley-multiple="accommodation"
+                                       data-parsley-id="12"
+                                       type="radio" data-error="Accommodation ?"
+                                        {% if selected_student.accommodation %}
+                                       checked
+                                        {% endif %}
+                                       required> &nbsp; Yes &nbsp;
+
+                                <input name="accommodation" value="N" data-parsley-multiple="accommodation"
+                                        {% if not selected_student.accommodation %}
+                                       checked
+                                        {% endif %}
+                                       type="radio"> &nbsp; No &nbsp;
+
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button type="submit" name="update" class="btn1 btn-dark-green"> Update</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        {% if add %}
+            $(function () {
+                new PNotify({
+                    title: 'Success!',
+                    text: 'Registration Success',
+                    type: 'success',
+                    styling: 'bootstrap3',
+                    min_height: "20px",
+                    mobile: {'styling': true}
+                });
+            });
+        {% endif %}
+    </script>
+
+{% endblock %}

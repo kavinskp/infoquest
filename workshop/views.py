@@ -339,7 +339,7 @@ def add_students_workshop(request):
             #sendEmail(datas)
             return render(request, "workshop/add_students_workshop.html", {'add': True})
 
-    return render(request, "workshop/add_students_workshop.html", {})
+    return render(request, "workshop/add_students_workshop.html",{})
 
 
 @login_required
@@ -438,6 +438,7 @@ def workshop_edit_student(request):
             location = request.POST.get('location')
             year_of_study = request.POST.get('year')
             accommodation = request.POST.get('accommodation')
+            tranaction_id = request.POST.get('transaction_id')
             accommodation_needed = False
             if accommodation == 'Y':
                 accommodation_needed = True
@@ -450,6 +451,7 @@ def workshop_edit_student(request):
             instance.college = college_name
             instance.location = location
             instance.year_of_study = year_of_study
+            instance.transaction_id = tranaction_id
             instance.accommodation = accommodation_needed
             instance.save()
             return render(request, 'workshop/edit_student_workshop.html',
@@ -480,6 +482,13 @@ def workshop_edit_student(request):
 def workshop_query(request):
     list_of_students = workshop_queries.objects.all()
     return render(request, 'workshop/workshop_queries.html',
+                  {
+                      'list_of_students': list_of_students
+                  })
+
+def verify_transaction(request):
+    list_of_students = workshop_student.objects.all()
+    return render(request, 'workshop/verify_transaction.html',
                   {
                       'list_of_students': list_of_students
                   })

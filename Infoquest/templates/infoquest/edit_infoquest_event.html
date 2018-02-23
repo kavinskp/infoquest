@@ -1,0 +1,130 @@
+{% extends 'dashboard/dashboard_content.html' %}
+
+{% block title %}
+    Add Events
+{% endblock %}
+
+{% block head_block %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/i18n/defaults-*.min.js"></script>
+
+{% endblock %}
+
+{% block rightPane %}
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-archive"></i>
+                Add InfoQuest Events
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="btn1 btn1-secondary" href="{% url 'view_infoquest_events' %}">View
+                </a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <form method="POST">{% csrf_token %}
+                    <input type="hidden" name="event_id" value="{{ event.id }}">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-horizontal form-label-left">
+                            <br>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Event Name
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input disabled class="form-control" type="text" name="event_name" required
+                                           placeholder="Type the event name" value="{{ event.event_name }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    No. of Rounds
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input disabled class="form-control" type="number" name="rounds" required
+                                           placeholder="Enter no. of rounds for the event" min="1"
+                                           value="{{ event.rounds }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Timings
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea class="form-control" type="text" name="timings"
+                                    >{% if event.timings %}{{ event.timings }}{% endif %}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Location
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea class="form-control" type="text" name="location"
+                                    >{% if event.location %}{{ event.location }}{% endif %}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Coordinator Name
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea class="form-control" type="text" name="name"
+                                    >{% if event.coordinator_name %}{{ event.coordinator_name }}{% endif %}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Coordinitor Phone
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea class="form-control" type="text" name="phone"
+                                    >{% if event.coordinator_phone %}{{ event.coordinator_phone }}{% endif %}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Extra
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea class="form-control" type="text" name="extra"
+                                    >{% if event.extra %}{{ event.extra }}{% endif %}</textarea>
+                                </div>
+                            </div>
+
+                            <br>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <button name="update" type="submit" class="btn1 btn-dark-green">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

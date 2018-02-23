@@ -32,22 +32,22 @@
             <ul class="rslides" id="slider1">
                 <li>
                     <div class="banner">
-                        <h3 style="font-size: x-large;color: #ffffff;font-weight: bolder;">
+                        <h3 style="font-size: x-large;color: #000000;font-weight: bolder;">
                             Mark your schedules and make sure you don't miss out on the highlights that IQ offers.
                         </h3>
                     </div>
                 </li>
                 <li>
                     <div class="banner banner2">
-                        <h3 style="font-size: x-large;color: #ffffff;font-weight: bolder;">
+                         <h3 style="font-size: x-large;color: #060d06;font-weight: bolder;">
                             Ignite your inner processor chip and get set to witness some extraordinary feats!!!
                         </h3>
                     </div>
                 </li>
                 <li>
                     <div class="banner banner3">
-                        <h3 style="font-size: x-large;color: #ffffff;font-weight: bolder;">
-                            Rev up your computers and pump up your adrenaline for the grand extravaganza IQ '18!
+                        <h3 style="font-size: x-large;color: #000000;font-weight: bolder;">
+                            Rev up your computers and pump up your adrenaline for the grand extravaganza<em style="color: #ffea42"> IQ '18!</em>
                         </h3>
                     </div>
                 </li>
@@ -59,7 +59,7 @@
         <div class="top-nav">
             <span class="menu">
                 Menu&nbsp;
-                <i class="fa fa-chevron-down" style="color: rgb(210, 10, 10);font-size: 28px"></i></span>
+                <i class="fa fa-chevron-down" style="color: rgb(0,0,0);font-size: 28px"></i></span>
             <ul class="w3l">
                 <li>
                     <a class="active" href="{% url 'iq' %}"><i class="fa fa-home"></i><span>Home</span></a>
@@ -70,7 +70,9 @@
                 </li>
                 <li><a href="{% url 'iq_result' %}"><i class="glyphicon glyphicon-list-alt"></i><span>Result</span></a>
                 </li>
-                <li><a href="{% url 'iq_contact' %}"><i class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>
+{#                <li><a href="{% url 'iq_contact' %}"><i class="glyphicon glyphicon-envelope"></i><span>Sponsor</span></a></li>#}
+                <li><a href="{% url 'iq_payment' %}"><i class="glyphicon glyphicon-barcode"></i><span>Payment</span></a></li>
+
             </ul>
             <!-- script-for-menu -->
             <script>
@@ -90,11 +92,11 @@
     <!-- navigation end here -->
     <!-- banner end here -->
     <div class="wave-bg">
-        <div class="footer" style="background-color: rgba(33, 53, 51, 0.77)">
+        <div class="footer">
             <div class="container">
                 <div class="banner-w3bottom-row">
                     <div class="col-md-12">
-                        <h2 style="color: #35a6bf" id="countdown_text" align="center">EVENTS STARTS IN .....</h2><br>
+                        <h2 style="color: rgb(255,255,255)" id="countdown_text" align="center">EVENTS STARTS IN .....</h2><br>
                     </div>
                     <div class="col-md-12">
                         <ul id="countdown">
@@ -122,7 +124,7 @@
     </div>
     <!-- //banner end here -->
     <!-- welcome -->
-    <div style="background-color: rgba(154, 186, 212, 0.57)">>
+    <div style="background-color: rgba(222,203,192,0.57)">
         {#            <h2 class="agile-title">Welcome To Our Site</h2>#}
         <br>
         <br>

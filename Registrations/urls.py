@@ -12,6 +12,7 @@ urlpatterns = [
 
     url(r'^IQ2k18/events/$', events, name = "iq_events"),
     url(r'^IQ2k18/sponsor/$', contact, name = "iq_contact"),
+    url(r'^IQ2k18/payment/$', payment, name = "iq_payment"),
     url(r'^IQ2k18/rseegistration/$', register, name = "iq_register"),
     url(r'^IQ2k18/results/$', result, name = "iq_result"),
 
@@ -26,16 +27,17 @@ urlpatterns = [
     url(r'^IQ2k18/Quiz/$', quiz, name = "quiz"),
 
 
-    url(r'^IQ2k18/Creative_eye/$', creative_eye, name = "creative_eye"),
-    url(r'^IQ2k18/Creative_eye/Blind_coding/$', blind_coding, name = "blind_coding"),
-    url(r'^IQ2k18/Creative_eye/Eagle_finger/$', eagle_finger, name = "eagle_finger"),
-    url(r'^IQ2k18/Creative_eye/Meme_creation/$', meme_creation, name = "meme_creation"),
-    url(r'^IQ2k18/Creative_eye/Connections/$', connections, name = "connections"),
+    url(r'^IQ2k18/Blind_coding/$', blind_coding, name = "blind_coding"),
+    url(r'^IQ2k18/Eagle_finger/$', eagle_finger, name = "eagle_finger"),
+    url(r'^IQ2k18/Meme_creation/$', meme_creation, name = "meme_creation"),
+    url(r'^IQ2k18/Debugging/$', debugging, name = "debugging"),
+    url(r'^IQ2k18/Marketing/$', marketing, name="marketing"),
 
 
 
     url(r'^IQ2k18/Gaming/$', gaming, name = "gaming"),
-    url(r'^IQ2k18/Designolah/$', poster, name = "poster"),
+    url(r'^IQ2k18/DataStructures/$', datastructure, name = "datastructures"),
+    url(r'^IQ2k18/DataBase/$', database, name="database"),
     url(r'^IQ2k18/Online_Photography/$', photography, name = "photography"),
 
 

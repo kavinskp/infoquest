@@ -112,25 +112,28 @@ body a:hover{
     position: relative;
 } 
 .banner{
-    background: url(../images/slider1.jpg)no-repeat center;
+    background: url(../images/slider_img_1.jpg)no-repeat center;
     max-height: 500px;
     opacity: 0.85;
     background-size: cover;
     position: relative;
+    filter: grayscale(30%);
 }
 .banner2 {
-    background: url(../images/slider2.jpg)no-repeat center;
-    color: #076768;
+    background: url(../images/slider_img_2.jpg)no-repeat center;
+    color: #ffffff;
     max-height: 500px;
     opacity: 0.85;
     background-size: cover;
+    filter: grayscale(30%);
 }
 .banner3 {
-    background: url(../images/slider3.jpg)no-repeat center;
-    color: #076768;
+    background: url(../images/ima7.jpg)no-repeat white;
+    color: #d2d0d4;
     max-height: 500px;
     opacity: 0.85;
     background-size: cover;
+
 }
 /*-- header --*/
 .agileinfo-header {
@@ -297,13 +300,14 @@ span.menu {
 }
 .top-nav ul li a {
     display: block;
-    background: #ff4c4c;
+    background: #2a1f1e;
     padding: 1em;
     color: #fff;
     font-size: 1em;
 }
 .top-nav ul li a:hover,.top-nav ul li a.active{
-    background: #007b70;
+    background: #decbc0;
+    color : black;
 }
 .top-nav ul li span {
     display: block;
@@ -468,8 +472,13 @@ span.menu {
 }
 .agile-title {
     font-size: 3.5em;
-    color: #007b70;
+    color: #0f3b7b;
     text-align: center;
+    /*margin-bottom: 0.8em;*/
+}
+.agile-sub-title {
+    font-size: 1.5em;
+    color: #000000;
     /*margin-bottom: 0.8em;*/
 }
 .welcome p {
@@ -775,17 +784,19 @@ p{
 /*-- //albums --*/
 /* Wave */
 .wave-bg{
-    background: url(../images/wave.jpg)no-repeat center;
+    background: url(../images/keyboard.jpg)no-repeat center;
     background-size: cover;
 }
 /*-- //footer start here --*/
 .agilebg-footer{
-    background: url(../images/footer_img.jpg)no-repeat center;
+    background: url(../images/coding_workspace.jpg)no-repeat center ;
+    /*filter : blur(2px);*/
     background-size: cover;
 }
 .footer {
-    background-color: rgba(0, 64, 58, 0.77);
+    background-color: rgba(42, 31, 30, 0.59);
 	padding: 4em 0 3em;
+
 }
 .footer-wthree-grid:nth-child(2) {
     padding-right: 8em;
@@ -1974,7 +1985,7 @@ h4.w3ls-title {
     cursor: pointer;
     bottom: -40px;
     font-size: 2em;
-    color: #f70000;
+    color: #000000;
 	font-weight: bold;
 }
 .top-nav ul.w3l {
@@ -1989,10 +2000,10 @@ h4.w3ls-title {
 }
 .top-nav ul.w3l li {
     display: block;
-    background: #007b70;
+    background: #d4cc26;
     margin: 0;
     width: 100%;
-    border-top: 1px solid #ff7e7e;
+    border-top: 1px solid #000000;
 }
 .top-nav ul li a {
     padding: .8em 12em;

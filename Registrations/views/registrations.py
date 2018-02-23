@@ -15,7 +15,7 @@ from Registrations.models import CustomUser, workshop_student,Infoquest_student
 from Registrations.forms import LoginForm, passchange
 
 from Registrations.send_mail import sendEmail
-    # , sendEmail_Registration_Workshop
+# , sendEmail_Registration_Workshop
 
 
 def signup(request):
@@ -29,7 +29,8 @@ def signup(request):
             college_name = request.POST.get('college')
             location = request.POST.get('location')
             year_of_study = request.POST.get('year')
-            accommodation = request.POST.get('accommodation')
+            payment = request.POST.get('payment')
+            transaction_id = request.POST.get('transaction_id')
 
             if workshop_student.objects.filter(email=email):
                 return render(request, 'prompt_pages/registered_mail.html', {'email': email})
@@ -37,9 +38,27 @@ def signup(request):
             if workshop_student.objects.filter(phone_number=mobile_number):
                 return render(request, 'prompt_pages/registered_phone.html', {'phone': mobile_number})
 
-            accommodation_needed = False
-            if accommodation == 'Y':
-                accommodation_needed = True
+            if payment == 'N':
+                if transaction_id != '':
+                    msg = {
+                        'page_title': 'Invalid',
+                        'title': 'Transaction ID needed for only online Registration',
+                        'description': 'Choose payment mode as online if you have paid already'
+                    }
+                    return render(request, 'prompt_pages/error_page_base.html', {'message': msg})
+
+                transaction_id = False
+
+            online_payment = False
+            if payment == 'Y':
+                online_payment = True
+                if transaction_id == '':
+                    msg = {
+                        'page_title': 'Invalid',
+                        'title': 'Transaction ID needed for online Registration',
+                        'description': 'Transaction Id needed to confirm your online payment'
+                    }
+                    return render(request, 'prompt_pages/error_page_base.html', {'message': msg})
 
             if len(mobile_number) != 10:
                 msg = {
@@ -58,8 +77,9 @@ def signup(request):
                 college=college_name,
                 location=location,
                 year_of_study=year_of_study,
-                accommodation=accommodation_needed,
-                time_created=timezone.now()
+                accommodation=False,
+                time_created=timezone.now(),
+                transaction_id = transaction_id,
             )
 
 
@@ -89,7 +109,8 @@ def signup(request):
             user_data['college'] = str(college_name)
             user_data['location'] = str(location)
             user_data['year_of_study'] = str(year_of_study)
-            user_data['accommodation'] = str(accommodation_needed)
+            user_data['transaction_id'] = str(transaction_id)
+            # user_data['accommodation'] = str(accommodation_needed)
             user_data['time_created'] = str(timezone.now())
             # sendEmail_Registration_Workshop(user_data)
 
@@ -97,6 +118,7 @@ def signup(request):
             datas['name'] = instance.name
             datas['email'] = email
             datas['activation_key'] = key
+            # datas['transaction_id'] = transaction_id
 
             sendEmail(datas)
             return render(request, 'prompt.html', {'mail': email})

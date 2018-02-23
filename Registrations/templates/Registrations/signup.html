@@ -26,7 +26,7 @@
 
     <style>
         #info_register {
-            background-color: rgba(4, 74, 76, 0.83);
+            background-color: rgba(20, 23, 64, 0.58);
         }
 
     </style>
@@ -45,10 +45,10 @@
         <div class="center-container">
             <h4 align="center">Now InfoQuest on Youtube!</h4>
             <h2 class="bounce bounceIn animated" align="center"><i class="fa fa-hand-o-right"></i>&nbsp;<a
-                    style="color: #f58c00" href="https://www.youtube.com/channel/UCOqCQ818UlIGXtXFa-mSMhw"
+                    style="color: #ffffff" href="https://www.youtube.com/channel/UCOqCQ818UlIGXtXFa-mSMhw"
                     target="_blank"><u>Infoquest Gct</u></a></h2>
             <br>
-            <div class="header-main" style="color: #ed437b">
+            <div class="header-main" style="color: #ffffff">
                 <h1 class="font" id="title_content">Workshop - Registration</h1>
                 <form class="form-horizontal form-label-left" data-toggle="validator" role="form" method="POST"
                       id="submit_form">
@@ -166,27 +166,41 @@
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
+
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
-                               style="font-size: large; font-weight: bolder"> Accommodation Needed <span
+                               style="font-size: large; font-weight: bolder"> Payment Mode <span
                                 class="required" style="font-size: large; font-weight: bolder">*</span>
                         </label>
                         <div class="col-md-7 col-sm-6 col-xs-12">
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-primary" data-toggle-class="btn-default"
                                        data-toggle-passive-class="btn-default">
-                                    <input name="accommodation" value="Y" data-parsley-multiple="accommodation"
+                                    <input name="payment" value="Y" data-parsley-multiple="accommodation"
                                            data-parsley-id="12"
-                                           type="radio" data-error="Accommodation ?" required> &nbsp; Yes &nbsp;
+                                           type="radio" data-error="Payment Mode?" required> &nbsp; Online &nbsp;
                                 </label>
                                 <label class="btn btn-primary" data-toggle-class="btn-primary"
                                        data-toggle-passive-class="btn-default">
-                                    <input name="accommodation" value="N" data-parsley-multiple="accommodation"
-                                           type="radio"> &nbsp; No &nbsp;
+                                    <input name="payment" value="N" data-parsley-multiple="payment"
+                                           type="radio"> &nbsp; Onspot &nbsp;
                                 </label>
                             </div>
-                            <div class="help-block with-errors">For Girls accommodation fee &nbsp;&nbsp;<i
-                                    class="fa fa-inr">50</i></div>
+                            <div class="help-block with-errors"  style="color:#ffffff;">&nbsp;Pay using online to avoid queue on the day of workshop</div>
+                            <span ><a href="{% url 'iq_payment' %}" style="color:yellow;"> Click here to know payment options</a>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
+                               style="font-size: large; font-weight: bolder"> Transaction ID
+                        </label>
+                        <div class="col-md-7 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" name="transaction_id"
+                                   data-error="Enter your correct Transaction ID"
+                                   placeholder="Enter your Transaction ID (Online Payment)"  type="text"
+                                   style="font-weight: bold">
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="ln_solid"></div>

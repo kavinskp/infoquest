@@ -96,6 +96,7 @@ class workshop_student(models.Model):
     on_spot = models.BooleanField(default=False)
     present = models.BooleanField(default=False)
     time_created = models.DateTimeField()
+    transaction_id = models.CharField(max_length=40)
     activation_key = models.CharField(max_length=40)
     key_expires = models.DateTimeField()
     mail_verified = models.BooleanField(default=False)

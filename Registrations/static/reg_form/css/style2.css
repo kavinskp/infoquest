@@ -5,7 +5,8 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 /* reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;color: #17e6be}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;color: #addede
+}
 article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
 ol,ul{list-style:none;margin:0px;padding:0px;}
 blockquote,q{quotes:none;}
@@ -142,7 +143,7 @@ i.fa.fa-facebook, i.fa.fa-twitter, i.fa.fa-google-plus {
     font-size: 22px;
     color: #000;
     text-align: center;
-    background: #fbbc05;
+    background: #ffffff;
     width: 40px;
     height: 40px;
     line-height: 1.9em;
@@ -201,7 +202,7 @@ i.fa.fa-facebook, i.fa.fa-twitter, i.fa.fa-google-plus {
   font-family: 'CinzelDecorative-Regular';
 }
 .header-left-bottom input[type="submit"] {
-    background: #34a853;
+    background: #a49ca8;
     color: #FFF;
     font-size: 1.5em;
     padding: 0.3em 1.2em;
@@ -218,7 +219,7 @@ i.fa.fa-facebook, i.fa.fa-twitter, i.fa.fa-google-plus {
 	font-family: 'CinzelDecorative-Regular';
 }
 .header-left-bottom input[type="submit"]:hover {
-    background: #11732b;
+    background: #ffffff;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -261,7 +262,7 @@ i.fa.fa-facebook, i.fa.fa-twitter, i.fa.fa-google-plus {
   color: #FFF;
 }
 .copyright p a:hover{
-	color:#34a853;
+	color: #ffffff;
 	text-decoration:none;
 }
 /*-- copyright end here --*/

@@ -9,6 +9,7 @@ from workshop.views import *
 urlpatterns = [
 
     url(r'^workshop_queries/$', workshop_query, name='workshop_queries'),
+    url(r'^verify_transaction/$', verify_transaction, name='verify_transaction'),
 
     url(r'^view_registered_workshop/$', workshop_students_registered, name='workshop_registered'),
     url(r'^view_unverified_workshop/$', workshop_students_unverified, name='workshop_unverified'),
