@@ -173,6 +173,26 @@
                                     {% endif %}
                                 </td>
                             </tr>
+                            <tr>
+                                <th style="color: #a951ed"><i class="fa fa-building"></i>&nbsp;&nbsp;
+                                    Confirmed Online Payment
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {% if student.conf_tr_id %}
+                                        <i class="fa fa-check"></i>
+                                    {% else %}
+                                        <i class="fa fa-remove"></i>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="color: #a951ed"><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;
+                                    Transaction Id
+                                </th>
+                                <td style="color: #2743ed;font-size: medium">
+                                    {{ student.transaction_id }}
+                                </td>
+                            </tr>
                         </table>
                         <form method="POST">
                             {% csrf_token %}

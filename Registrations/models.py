@@ -96,11 +96,11 @@ class workshop_student(models.Model):
     on_spot = models.BooleanField(default=False)
     present = models.BooleanField(default=False)
     time_created = models.DateTimeField()
-    transaction_id = models.CharField(max_length=40)
+    transaction_id = models.CharField(max_length=40,blank=True,null=True)
     activation_key = models.CharField(max_length=40)
     key_expires = models.DateTimeField()
     mail_verified = models.BooleanField(default=False)
-
+    conf_tr_id=models.BooleanField(default=False)
     def __str__(self):
         name = str(self.name)
         return name
@@ -137,7 +137,8 @@ class Infoquest_student(models.Model):
     mail_verified = models.BooleanField(default=False)
     entry_time = models.DateTimeField(blank=True, null=True)
     id_number = models.CharField(max_length=20, blank=True, null=True)
-
+    transaction_id = models.CharField(max_length=40,blank=True,null=True)
+    conf_tr_id=models.BooleanField(default=False)
     def __str__(self):
         name = str(self.name)
         return name

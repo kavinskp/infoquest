@@ -37,6 +37,8 @@
                                     <th>Year</th>
                                     <th>Phone</th>
                                     <th>Acc.</th>
+                                    <th>Confirmed Online Payment</th>
+                                    <th>TransId</th>
                                     <th>Time</th>
                                 </tr>
                                 </thead>
@@ -71,6 +73,12 @@
                                                 <i class="fa fa-check"></i>
                                             {% endif %}
                                         </td>
+                                        <td align="center">
+                                            {% if student.conf_tr_id %}
+                                                <i class="fa fa-check"></i>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ student.transaction_id }}</td
                                         <td>
                                             {{ student.time_created|date:'d' }}th
                                             {{ student.time_created|time }}

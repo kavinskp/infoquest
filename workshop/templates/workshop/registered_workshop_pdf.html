@@ -30,6 +30,8 @@
                 <td align="center" style="font-weight: bold;font-size: large;width: 7%;">Phone</td>
                 <td align="center" style="font-weight: bold;font-size: large;width: 20%;">Email</td>
                 <td align="center" style="font-weight: bold;font-size: large;width: 4%;">Acc</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 4%;">CifOP</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 4%;">TransId</td>
                 <td align="center" style="font-weight: bold;font-size: large;width: 13%;">Signature</td>
             </tr>
             </thead>
@@ -51,6 +53,13 @@
                     <td align="left">&nbsp;&nbsp;{{ student.email }}</td>
                     <td align="center">&nbsp;&nbsp;
                         {% if student.accommodation %}
+                            Y
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td align="center">&nbsp;&nbsp;
+                        {% if student.conf_tr_id %}
                             Y
                         {% else %}
                             -

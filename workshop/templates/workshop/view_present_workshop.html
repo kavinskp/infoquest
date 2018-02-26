@@ -26,9 +26,11 @@
                             <th>Email</th>
                             <th>College</th>
                             <th>Location</th>
-                            <th>Year_of_study</th>
+                            <th>Year</th>
                             <th>Phone Number</th>
-                            <th>Accommodation</th>
+                            <th>Accom</th>
+                            <th>Trans Id</th>
+                            <th>Confirmed Online Payment</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,21 +44,27 @@
                                 <td>{{ student.location }}</td>
                                 <td align="center">
                                     {% if student.year_of_study == '1' %}
-                                        I year
+                                        I
                                     {% endif %}
                                     {% if student.year_of_study == '2' %}
-                                        II year
+                                        II
                                     {% endif %}
                                     {% if student.year_of_study == '3' %}
-                                        III year
+                                        III
                                     {% endif %}
                                     {% if student.year_of_study == '4' %}
-                                        IV year
+                                        IV
                                     {% endif %}
                                 </td>
                                 <td align="center">{{ student.phone_number }}</td>
                                 <td align="center">
                                     {% if student.accommodation %}
+                                        <i class="fa fa-check"></i>
+                                    {% endif %}
+                                </td>
+                                <td>{{ student.transaction_id }}</td>
+                                <td align="center">
+                                    {% if student.conf_tr_id %}
                                         <i class="fa fa-check"></i>
                                     {% endif %}
                                 </td>

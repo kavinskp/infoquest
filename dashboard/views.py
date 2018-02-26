@@ -11,3 +11,4 @@ def get_dashboard(request):
     request.session['logged_first'] = False
 
     return render(request, 'dashboard/dashboard.html', {'logged_first': logged_first, })
+

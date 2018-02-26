@@ -19,6 +19,8 @@ def workshop_total_students_entry(request):
     list_of_students = workshop_student.objects.filter(present=True).order_by('college', 'name')
     boys = workshop_student.objects.filter(gender='M')
     boys = len(boys)
+    conf = workshop_student.objects.filter(conf_tr_id=True)
+    conf = len(conf)
     girls = workshop_student.objects.filter(gender='F')
     girls = len(girls)
     accommodation_boys = workshop_student.objects.filter(gender='M', accommodation=True)
@@ -32,6 +34,7 @@ def workshop_total_students_entry(request):
         'accommodation_girls': accommodation_girls,
         'boys': boys,
         'girls': girls,
+        'conf':conf,
         'total': boys + girls
     })
 
@@ -43,6 +46,8 @@ def workshop_students_registered(request):
     boys = len(boys)
     girls = workshop_student.objects.filter(gender='F', mail_verified=True, on_spot=False)
     girls = len(girls)
+    conf = workshop_student.objects.filter(conf_tr_id=True)
+    conf = len(conf)
     accommodation_boys = workshop_student.objects.filter(gender='M', accommodation=True, mail_verified=True, on_spot=False)
     accommodation_boys = len(accommodation_boys)
     accommodation_girls = workshop_student.objects.filter(gender='F', accommodation=True, mail_verified=True, on_spot=False)
@@ -54,6 +59,7 @@ def workshop_students_registered(request):
         'accommodation_girls': accommodation_girls,
         'boys': boys,
         'girls': girls,
+        'conf': conf,
         'total': boys + girls
     })
 
@@ -65,6 +71,8 @@ def workshop_students_unverified(request):
     boys = len(boys)
     girls = workshop_student.objects.filter(gender='F', mail_verified=False, on_spot=False)
     girls = len(girls)
+    conf = workshop_student.objects.filter(conf_tr_id=True)
+    conf = len(conf)
     accommodation_boys = workshop_student.objects.filter(gender='M', accommodation=True, mail_verified=True, on_spot=False)
     accommodation_boys = len(accommodation_boys)
     accommodation_girls = workshop_student.objects.filter(gender='F', accommodation=True, mail_verified=True, on_spot=False)
@@ -74,6 +82,7 @@ def workshop_students_unverified(request):
         'list_of_students': list_of_students,
         'accommodation_boys': accommodation_boys,
         'accommodation_girls': accommodation_girls,
+        'conf': conf,
         'boys': boys,
         'girls': girls,
         'total': boys + girls
@@ -87,6 +96,8 @@ def workshop_on_spot(request):
     boys = len(boys)
     girls = workshop_student.objects.filter(gender='F', on_spot=True)
     girls = len(girls)
+    conf = workshop_student.objects.filter(conf_tr_id=True)
+    conf = len(conf)
     accommodation_boys = workshop_student.objects.filter(gender='M', accommodation=True, mail_verified=True, on_spot=False)
     accommodation_boys = len(accommodation_boys)
     accommodation_girls = workshop_student.objects.filter(gender='F', accommodation=True, mail_verified=True, on_spot=False)
@@ -97,10 +108,32 @@ def workshop_on_spot(request):
         'accommodation_boys': accommodation_boys,
         'accommodation_girls': accommodation_girls,
         'boys': boys,
+        'conf':conf,
         'girls': girls,
         'total': boys + girls
     })
 
+
+@login_required
+def workshop_paid(request):
+    list_of_students = workshop_student.objects.filter(conf_tr_id=True).order_by('-time_created')
+    boys = workshop_student.objects.filter(gender='M', conf_tr_id=True)
+    boys = len(boys)
+    girls = workshop_student.objects.filter(gender='F', conf_tr_id=True)
+    girls = len(girls)
+    accommodation_boys = workshop_student.objects.filter(gender='M', accommodation=True, mail_verified=True, on_spot=False)
+    accommodation_boys = len(accommodation_boys)
+    accommodation_girls = workshop_student.objects.filter(gender='F', accommodation=True, mail_verified=True, on_spot=False)
+    accommodation_girls = len(accommodation_girls)
+
+    return render(request, 'workshop/paid_workshop.html', {
+        'list_of_students': list_of_students,
+        'accommodation_boys': accommodation_boys,
+        'accommodation_girls': accommodation_girls,
+        'boys': boys,
+        'girls': girls,
+        'total': boys + girls
+    })
 
 @login_required
 def workshop_boys_accommodation(request):
@@ -134,6 +167,18 @@ def workshop_pdf_total_students_entry(request):
 @login_required
 def workshop_pdf_students_registered(request):
     list_of_students = workshop_student.objects.filter(mail_verified=True, on_spot=False)
+
+    context_data = {
+        'student_list': list_of_students
+    }
+
+    return context_data
+
+
+
+@login_required
+def workshop_pdf_students_paid(request):
+    list_of_students = workshop_student.objects.filter(conf_tr_id=True).order_by('-time_created')
 
     context_data = {
         'student_list': list_of_students
@@ -209,6 +254,21 @@ class workshop_RegisteredPDF(PDFTemplateView):
     def get_context_data(self, **kwargs):
         context_data = workshop_pdf_students_registered(self.request)
         return super(workshop_RegisteredPDF, self).get_context_data(
+            pagesize="A4",
+            context=context_data,
+            **kwargs
+        )
+
+
+class workshop_PaidPDF(PDFTemplateView):
+    template_name = "workshop/paid_workshop_pdf.html"
+
+    def get(self, request, *args, **kwargs):
+        return super(workshop_PaidPDF, self).get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context_data = workshop_pdf_students_paid(self.request)
+        return super(workshop_PaidPDF, self).get_context_data(
             pagesize="A4",
             context=context_data,
             **kwargs
@@ -295,7 +355,7 @@ def add_students_workshop(request):
 
             if workshop_student.objects.filter(phone_number=mobile_number):
                 return render(request, 'prompt_pages/registered_phone.html', {'phone': mobile_number})
-
+ 
             accommodation_needed = False
             if accommodation == 'Y':
                 accommodation_needed = True
@@ -310,9 +370,9 @@ def add_students_workshop(request):
                 location=location,
                 year_of_study=year_of_study,
                 accommodation=accommodation_needed,
-                on_spot=True,
+                on_spot=on_spot,
                 present=True,
-                time_created=timezone.now()
+                time_created=timezone.now(),
             )
 
             random_number_string = str(random.random())
@@ -375,6 +435,7 @@ def workshop_mark_student_presence(request):
             location = request.POST.get('location')
             year_of_study = request.POST.get('year')
             accommodation = request.POST.get('accommodation')
+            transaction_id = request.POST.get('transaction_id')
             accommodation_needed = False
             if accommodation == 'Y':
                 accommodation_needed = True
@@ -388,6 +449,11 @@ def workshop_mark_student_presence(request):
             instance.location = location
             instance.year_of_study = year_of_study
             instance.accommodation = accommodation_needed
+            instance.transaction_id=transaction_id
+            if transaction_id=='' or transaction_id=='None':
+                instance.on_spot=True
+            else:
+                instance.on_spot=False
             instance.save()
             return render(request, 'workshop/mark_student_presence_workshop.html',
                           {
@@ -438,7 +504,8 @@ def workshop_edit_student(request):
             location = request.POST.get('location')
             year_of_study = request.POST.get('year')
             accommodation = request.POST.get('accommodation')
-            tranaction_id = request.POST.get('transaction_id')
+            transaction_id = request.POST.get('transaction_id')
+            
             accommodation_needed = False
             if accommodation == 'Y':
                 accommodation_needed = True
@@ -451,8 +518,12 @@ def workshop_edit_student(request):
             instance.college = college_name
             instance.location = location
             instance.year_of_study = year_of_study
-            instance.transaction_id = tranaction_id
+            instance.transaction_id = transaction_id
             instance.accommodation = accommodation_needed
+            if transaction_id=='' or transaction_id=='None':
+                instance.on_spot=True
+            else:
+                instance.on_spot=False
             instance.save()
             return render(request, 'workshop/edit_student_workshop.html',
                           {

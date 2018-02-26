@@ -44,6 +44,10 @@
                                 <td>Girls Accommodation</td>
                                 <td><strong>{{ accommodation_girls }}</strong></td>
                             </tr>
+                            <tr>
+                                <td>Online Paid Count</td>
+                                <td><strong>{{ conf }}</strong></td>
+                            </tr>
 
                         </table>
                     </div>
@@ -62,6 +66,8 @@
                                     <th>Year</th>
                                     <th>Phone</th>
                                     <th>Acc.</th>
+                                    <th>Trans Id</th>
+                                    <th>Confirmed Online Payment</th>
                                     <th>Time</th>
                                 </tr>
                                 </thead>
@@ -93,6 +99,12 @@
                                         <td align="center">{{ student.phone_number }}</td>
                                         <td align="center">
                                             {% if student.accommodation %}
+                                                <i class="fa fa-check"></i>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ student.transaction_id }}</td>
+                                        <td align="center">
+                                            {% if student.conf_tr_id %}
                                                 <i class="fa fa-check"></i>
                                             {% endif %}
                                         </td>

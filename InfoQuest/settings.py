@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'workshop',
     'Registrations',
     'django.contrib.admin',
+	'easy_pdf',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

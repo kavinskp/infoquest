@@ -171,6 +171,42 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
+                        <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
+                               style="font-size: large; font-weight: bolder"> Payment Mode <span
+                                class="required" style="font-size: large; font-weight: bolder">*</span>
+                        </label>
+                        <div class="col-md-7 col-sm-6 col-xs-12">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary" data-toggle-class="btn-default"
+                                       data-toggle-passive-class="btn-default">
+                                    <input name="payment" value="Y" data-parsley-multiple="accommodation"
+                                           data-parsley-id="12"
+                                           type="radio" data-error="Payment Mode?" required> &nbsp; Online &nbsp;
+                                </label>
+                                <label class="btn btn-primary" data-toggle-class="btn-primary"
+                                       data-toggle-passive-class="btn-default">
+                                    <input name="payment" value="N" data-parsley-multiple="payment"
+                                           type="radio"> &nbsp; Onspot &nbsp;
+                                </label>
+                            </div>
+                            <div class="help-block with-errors"  style="color:#ffffff;">&nbsp;Pay using online to avoid queue on the day of workshop</div>
+                            <span ><a href="{% url 'iq_payment' %}" style="color:yellow;"> Click here to know payment options</a>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 font" for="name"
+                               style="font-size: large; font-weight: bolder"> Transaction ID
+                        </label>
+                        <div class="col-md-7 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" name="transaction_id"
+                                   data-error="Enter your correct Transaction ID"
+                                   placeholder="Enter your Transaction ID (Online Payment)"  type="text"
+                                   style="font-weight: bold">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">

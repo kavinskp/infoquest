@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from Registrations.models import CustomUser, workshop_student
+from Registrations.models import CustomUser, workshop_student,Infoquest_student
 
 
 class UserCreationForm(forms.ModelForm):
@@ -84,4 +84,5 @@ admin.site.register(CustomUser, UserAdmin)
 
 
 admin.site.register(workshop_student)
+admin.site.register(Infoquest_student)
 # admin.site.register(infoquest_student)

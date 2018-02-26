@@ -15,7 +15,7 @@
             <div align="center" style="line-height: 20px">
                 <h4 style="font-size: 2em;font-stretch: semi-expanded;font-weight: bold">GOVERNMENT COLLEGE OF
                     TECHNOLOGY, COIMBATORE - 641 013</h4>
-                <h5 style="font-size: 2em;font-stretch: semi-expanded">Workshop2k17 Unverified Registerations</h5>
+                <h5 style="font-size: 2em;font-stretch: semi-expanded">Workshop2k18 Unverified Registerations</h5>
             </div>
         </div>
         <div><br></div>
@@ -30,6 +30,8 @@
                 <td align="center" style="font-weight: bold;font-size: large;width: 7%;">Phone</td>
                 <td align="center" style="font-weight: bold;font-size: large;width: 20%;">Email</td>
                 <td align="center" style="font-weight: bold;font-size: large;width: 4%;">Acc</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 4%;">CifOP</td>
+                <td align="center" style="font-weight: bold;font-size: large;width: 4%;">Trans Id</td>
                 <td align="center" style="font-weight: bold;font-size: large;width: 13%;">Signature</td>
             </tr>
             </thead>
@@ -56,6 +58,14 @@
                             -
                         {% endif %}
                     </td>
+                    <td align="center">&nbsp;&nbsp;
+                        {% if student.conf_tr_id %}
+                            Y
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                     <td align="left">&nbsp;&nbsp;{{ student.transaction_id }}</td>
                     <td style="width: 15%"></td>
                 </tr>
             {% endfor %}

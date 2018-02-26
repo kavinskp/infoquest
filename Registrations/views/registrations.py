@@ -138,13 +138,43 @@ def infoquest_signup(request):
             location = request.POST.get('location')
             year_of_study = request.POST.get('year')
             accommodation = request.POST.get('accommodation')
-
+            payment = request.POST.get('payment')
+            transaction_id = request.POST.get('transaction_id')
             if Infoquest_student.objects.filter(email=email):
                 return render(request, 'prompt_pages/registered_mail_infoquest.html', {'email': email})
+            if payment == 'N':
+                if transaction_id != '':
+                    msg = {
+                        'page_title': 'Invalid',
+                        'title': 'Transaction ID needed for only online Registration',
+                        'description': 'Choose payment mode as online if you have paid already'
+                    }
+                    return render(request, 'prompt_pages/error_page_base.html', {'message': msg})
+
+                transaction_id = False
+
+            online_payment = False
+            if payment == 'Y':
+                online_payment = True
+                if transaction_id == '':
+                    msg = {
+                        'page_title': 'Invalid',
+                        'title': 'Transaction ID needed for online Registration',
+                        'description': 'Transaction Id needed to confirm your online payment'
+                    }
+                    return render(request, 'prompt_pages/error_page_base.html', {'message': msg})
 
             accommodation_needed = False
             if accommodation == 'Y':
                 accommodation_needed = True
+            if len(mobile_number) != 10:
+                msg = {
+                    'page_title': 'Invalid',
+                    'title': 'Invalid Mobile Number',
+                    'description': 'You have entered an invalid mobile number'
+                }
+                return render(request, 'prompt_pages/error_page_base.html', {'message': msg})
+
 
             instance = Infoquest_student(
                 name=name,
@@ -155,7 +185,7 @@ def infoquest_signup(request):
                 location=location,
                 year_of_study=year_of_study,
                 accommodation=accommodation_needed,
-                time_created=timezone.now()
+                time_created=timezone.now(),
             )
 
             random_number_string = str(random.random())
