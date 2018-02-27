@@ -116,24 +116,25 @@ def workshop_on_spot(request):
 
 @login_required
 def workshop_paid(request):
-    list_of_students = workshop_student.objects.filter(conf_tr_id=True).order_by('-time_created')
-    boys = workshop_student.objects.filter(gender='M', conf_tr_id=True)
-    boys = len(boys)
-    girls = workshop_student.objects.filter(gender='F', conf_tr_id=True)
-    girls = len(girls)
-    accommodation_boys = workshop_student.objects.filter(gender='M', accommodation=True, mail_verified=True, on_spot=False)
-    accommodation_boys = len(accommodation_boys)
-    accommodation_girls = workshop_student.objects.filter(gender='F', accommodation=True, mail_verified=True, on_spot=False)
-    accommodation_girls = len(accommodation_girls)
 
-    return render(request, 'workshop/paid_workshop.html', {
-        'list_of_students': list_of_students,
-        'accommodation_boys': accommodation_boys,
-        'accommodation_girls': accommodation_girls,
-        'boys': boys,
-        'girls': girls,
-        'total': boys + girls
-    })
+    list_of_students = workshop_student.objects.filter(conf_tr_id=True)
+    if request.method == 'POST':
+        if 'absent_student' in request.POST:
+            got_student = request.POST.get('absent_student')
+            print(got_student)
+            instance = workshop_student.objects.get(id=got_student)
+            instance.conf_tr_id = False
+            instance.save()
+
+            return render(request, 'workshop/paid_workshop.html',
+                          {
+                              'list_of_students': list_of_students,
+                              'absent_student': instance
+                          })
+    return render(request, 'workshop/paid_workshop.html',
+                  {
+                      'list_of_students': list_of_students
+                  })
 
 @login_required
 def workshop_boys_accommodation(request):
@@ -520,7 +521,7 @@ def workshop_edit_student(request):
             instance.year_of_study = year_of_study
             instance.transaction_id = transaction_id
             instance.accommodation = accommodation_needed
-            if transaction_id=='' or transaction_id=='None':
+            if transaction_id =='' or transaction_id =='None':
                 instance.on_spot=True
             else:
                 instance.on_spot=False
@@ -558,7 +559,22 @@ def workshop_query(request):
                   })
 
 def verify_transaction(request):
-    list_of_students = workshop_student.objects.all()
+
+
+    list_of_students = workshop_student.objects.filter(conf_tr_id=False)
+    if request.method == 'POST':
+        if 'absent_student' in request.POST:
+            got_student = request.POST.get('absent_student')
+            print(got_student)
+            instance = workshop_student.objects.get(id=got_student)
+            instance.conf_tr_id = True
+            instance.save()
+
+            return render(request, 'workshop/verify_transaction.html',
+                          {
+                              'list_of_students': list_of_students,
+                              'absent_student': instance
+                          })
     return render(request, 'workshop/verify_transaction.html',
                   {
                       'list_of_students': list_of_students

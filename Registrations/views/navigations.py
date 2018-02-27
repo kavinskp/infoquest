@@ -271,7 +271,7 @@ def register(request):
         user_data['year_of_study'] = str(year_of_study)
         user_data['accommodation'] = str(accommodation_needed)
         user_data['time_created'] = str(timezone.now())
-        sendEmail_Registration_Infoquest(user_data)
+        # sendEmail_Registration_Infoquest(user_data)
 
         datas = {}
         datas['content'] = content

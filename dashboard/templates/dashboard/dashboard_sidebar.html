@@ -5,7 +5,7 @@
             {% load static %}
             <a href={% url 'dashboard' %} class="site_title">
                 <img src="{% static "img/gctw.png" %}" width="40" height="48" alt="gct image"/>
-                <span>InfoQuest '17</span>l
+                <span>InfoQuest '18</span>l
             </a>
         </div>
         <div class="clearfix"></div>
@@ -41,6 +41,8 @@
                                         <li><a href={% url 'add_students_workshop' %}>Add Students</a></li>
                                         <li><a href={% url 'edit_student_workshop' %}>Update Student Info</a></li>
                                         <li><a href={% url 'workshop_paid' %}>Online Paid Students</a></li>
+                                        <li><a href={% url 'verify_transaction' %}>Verify Transaction</a></li>
+
                                     </ul>
                                 </li>
 

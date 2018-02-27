@@ -1,246 +1,103 @@
 {% extends 'dashboard/dashboard_content.html' %}
 
 {% block title %}
-    Mark Availability
-{% endblock %}
-
-{% block head_block %}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
-
-    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/i18n/defaults-*.min.js"></script>
-
+    Available Students
 {% endblock %}
 
 {% block rightPane %}
+
     <div class="x_panel">
         <div class="x_title">
             <h2>
-                <i class="fa fa-user"></i>
-                Mark Availability
+                <i class="fa fa-list"></i>
+                Student Paid for Workshop
             </h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
             <div class="row">
-            <div class="col-md-12" align="right">
-                <a href="{% url 'add_students_workshop' %}" target="_blank">
-                    <button class="btn1 btn1-default">On Spot Registration</button>
-                </a>
-            </div>
-            <br>
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <form method="POST">{% csrf_token %}
-                        <div class="form-horizontal form-label-left">
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                    Email
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select class="selectpicker" name="email" data-width="400px" data-live-search="true"
-                                            title="Select student"
-                                            required>
-                                        {% for student in list_of_students %}
-                                            <option value="{{ student.id }}"
-                                                    data-subtext="{{ student.name }}">{{ student.email }}</option>
-                                        {% endfor %}
-                                    </select>
+                <div class="x_content">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Student Name</th>
+                            <th>Email</th>
+                            <th>College</th>
+                            <th>Year</th>
+                            <th>Phone Number</th>
+                            <th>Trans Id</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for student in list_of_students %}
+                            <tr>
+                                <td align="center">{{ forloop.counter }}</td>
+                                <td>{{ student.name }}</td>
+                                <td>{{ student.email }}</td>
+                                <td>{{ student.college }}</td>
+                                <td align="center">
+                                    {% if student.year_of_study == '1' %}
+                                        I
+                                    {% endif %}
+                                    {% if student.year_of_study == '2' %}
+                                        II
+                                    {% endif %}
+                                    {% if student.year_of_study == '3' %}
+                                        III
+                                    {% endif %}
+                                    {% if student.year_of_study == '4' %}
+                                        IV
+                                    {% endif %}
+                                </td>
+                                <td align="center">{{ student.phone_number }}</td>
+                                <td>{{ student.transaction_id }}</td>
+                                <td><input class="btn1-sm btn-deep-orange" type="button" data-toggle="modal"
+                                           data-target="#myModal"
+                                           name="absent" id="{{ student.id }}"
+                                           value="Verify"></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="modal" id="myModal" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel1" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel1">Remove Confirmation</h4>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <button type="submit" name="get_detail" class="btn1 btn-purple">Get details</button>
+                                <div class="modal-body" id="modal_body">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn1 btn1-secondary" data-dismiss="modal">Close
+                                    </button>
+                                    <button name="mark_absent" type="button" class="btn1 btn1-danger">Confirm verify
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-            {% if student %}
-                <div class="ln_solid"></div>
-                <div class="x_content" align="center">
-                    <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
-
-                        <table class="table table-striped">
-                            <tr>
-
-                                <th style="color: #a951ed"><i class="fa fa-user"></i>&nbsp;&nbsp;
-                                    Name
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {{ student.name }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="color: #a951ed"><i class="fa fa-phone"></i>&nbsp;&nbsp;
-                                    Phone no
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {{ student.phone_number }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="color: #a951ed"><i class="fa fa-envelope"></i>&nbsp;&nbsp;
-                                    Email id
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {{ student.email }}
-                                </td>
-                            </tr>
-                            <tr style="color: #a951ed">
-                                <th>
-                                    {% if student.gender == 'M' %}
-                                        <i class="fa fa-mars"></i>&nbsp;&nbsp;
-                                    {% else %}
-                                        <i class="fa fa-venus"></i>&nbsp;&nbsp;
-                                    {% endif %}
-                                    Gender
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {% if student.gender == 'M' %}
-                                        Male
-                                    {% else %}
-                                        Female
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr
-                                    {% if not student.department %}
-                                        style="background: #f92234"
-                                    {% endif %}
-                            >
-                                <th style="color: #a951ed"><i class="fa fa-university"></i>&nbsp;&nbsp;
-                                    Department
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {{ student.department }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="color: #a951ed"><i class="fa fa-university"></i>&nbsp;&nbsp;
-                                    College
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {{ student.college }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="color: #a951ed"><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;
-                                    Location
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {{ student.location }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="color: #a951ed"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;
-                                    Year of Study
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {% if student.year_of_study == '1' %}
-                                        I year
-                                    {% endif %}
-                                    {% if student.year_of_study == '2' %}
-                                        II year
-                                    {% endif %}
-                                    {% if student.year_of_study == '3' %}
-                                        III year
-                                    {% endif %}
-                                    {% if student.year_of_study == '4' %}
-                                        IV year
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="color: #a951ed"><i class="fa fa-building"></i>&nbsp;&nbsp;
-                                    Accommodation
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {% if student.accommodation %}
-                                        <i class="fa fa-check"></i>
-                                    {% else %}
-                                        <i class="fa fa-remove"></i>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="color: #a951ed"><i class="fa fa-building"></i>&nbsp;&nbsp;
-                                    Confirmed Online Payment
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {% if student.conf_tr_id %}
-                                        <i class="fa fa-check"></i>
-                                    {% else %}
-                                        <i class="fa fa-remove"></i>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="color: #a951ed"><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;
-                                    Transaction Id
-                                </th>
-                                <td style="color: #2743ed;font-size: medium">
-                                    {{ student.transaction_id }}
-                                </td>
-                            </tr>
-                        </table>
-                        <form method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="student" value="{{ student.id }}">
-                            <button type="submit" name="present" class="btn1 btn-dark-green"> Available</button>
-                            <button class="btn1 btn-orange" type="button" data-toggle="modal"
-                                    data-target="#myModal"> Edit
-                            </button>
-                        </form>
                     </div>
                 </div>
-            {% endif %}
+            </div>
         </div>
     </div>
 
-    <form method="POST">
+    <form id="dummy_form" method="POST">
         {% csrf_token %}
-        <input type="hidden" name="student" value="{{ student.id }}">
-
-        <div class="modal" id="myModal" tabindex="-1" role="dialog"
-             aria-labelledby="myModalLabel1" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" align="left">Edit Confirmation</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h4>Are sure to Edit ?</h4>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn1 btn1-secondary" data-dismiss="modal">Close
-                        </button>
-                        <button type="submit" name="edit" class="btn1 btn-deep-orange"> Confirm Edit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </form>
 
     <script type="text/javascript">
-        {% if present_student %}
+
+    {% if absent_student %}
             $(function () {
                 new PNotify({
                     title: 'Success!',
-                    text: '{{ present_student }} is marked present',
+                    text: '{{ absent_student }} is verified Transaction',
                     type: 'success',
                     styling: 'bootstrap3',
                     min_height: "20px",
@@ -248,6 +105,46 @@
                 });
             });
         {% endif %}
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        $('document').ready(function () {
+            $('[name="absent"]').click(function () {
+                document.getElementById('modal_body').innerHTML = '<ul><li><h4>Are you sure to verify the transaction <strong>' +
+                    $(this).closest('tr').find('td:eq(6)').text() + '</strong></h4></li></ul>';
+                var $hiddenInput = $('<input/>', {type: 'hidden', value: this.id, name: 'absent_student'});
+                $hiddenInput.appendTo('#dummy_form');
+            });
+        });
+
+        $('document').ready(function () {
+            $('[name="mark_absent"]').click(function () {
+
+                var $hiddenInput = $('<input/>', {
+                    type: 'hidden',
+                    value: getCookie('csrftoken'),
+                    name: 'csrfmiddlewaretoken'
+                });
+                $hiddenInput.appendTo('#dummy_form');
+
+                $('#dummy_form').submit();
+
+            });
+        });
     </script>
 
 {% endblock %}
