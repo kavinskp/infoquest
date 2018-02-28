@@ -469,16 +469,19 @@ span.menu {
 /*-- welcome --*/
 .welcome ,.albums,.about,.team,.single,.codes,.contact{
     padding: 5em 0;
+    background: #7edecf url('../../images/bg.gif');
+    background-size: cover;
+    color: white;
 }
 .agile-title {
     font-size: 3.5em;
-    color: #0f3b7b;
+    color: #fff8af;
     text-align: center;
     /*margin-bottom: 0.8em;*/
 }
 .agile-sub-title {
     font-size: 1.5em;
-    color: #000000;
+    color: #decbc0;
     /*margin-bottom: 0.8em;*/
 }
 .welcome p {
@@ -1066,7 +1069,7 @@ ul.pagination.w3-agileits-paging li a {
 /*-- single-page --*/
 .wthree_single_grid h2 {
     font-size: 2.5em;
-    color: #007b70;
+    color: #ffea42;
     text-transform: capitalize;
     margin-bottom: .8em;
 }
@@ -1884,8 +1887,14 @@ ul.pagination.w3-agileits-paging {
 .agileinfo-main h3 {
     font-size: 1.6em;
 }
+.single{
+    background-image:url(../../images/bg.gif);
+    background-repeat:no-repeat;
+    background-color: #decbc0;
+}
 .welcome, .albums, .about, .team, .single, .codes, .contact {
     padding: 3em 0;
+    background-color: #decbc0;
 }
 .agile-title {
     font-size: 2.6em;
@@ -2248,6 +2257,7 @@ p {
 }
 .welcome, .albums, .about, .team, .single, .codes, .contact {
     padding: 2.5em 0;
+    background: #7edecf url('../../images/bg.gif');
 }
 .view .agileits-w3layouts-mask, .view .content {
     padding: 1.5em 1em;
