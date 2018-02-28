@@ -6,6 +6,8 @@ urlpatterns = [
 
     url(r'^infoquest_queries/$', infoquest_query, name='infoquest_queries'),
 
+url(r'^iq_verify_transaction/$', iq_verify_transaction, name='iq_verify_transaction'),
+    url(r'^iq_paid/$', iq_paid, name='iq_paid'),
     url(r'^view_registered_infoquest/$', infoquest_students_registered, name='infoquest_registered'),
     url(r'^view_unverified_infoquest/$', infoquest_students_unverified, name='infoquest_unverified'),
     url(r'^on_spot_registrations_infoquest/$', infoquest_on_spot, name='infoquest_on_spot'),

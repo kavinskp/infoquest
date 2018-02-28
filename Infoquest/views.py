@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from easy_pdf.views import PDFTemplateView
 
 from Infoquest.models import *
+from Registrations.models import Infoquest_student
 
 
 @login_required
@@ -980,3 +981,47 @@ def result_display_order(request):
     return render(request, 'infoquest/result_display_order.html', {
         'events_list': events_list
     })
+
+def iq_verify_transaction(request):
+
+
+    list_of_students = Infoquest_student.objects.filter(conf_tr_id=False)
+    if request.method == 'POST':
+        if 'absent_student' in request.POST:
+            got_student = request.POST.get('absent_student')
+            print(got_student)
+            instance = Infoquest_student.objects.get(id=got_student)
+            instance.conf_tr_id = True
+            instance.save()
+
+            return render(request, 'workshop/verify_transaction.html',
+                          {
+                              'list_of_students': list_of_students,
+                              'absent_student': instance
+                          })
+    return render(request, 'workshop/verify_transaction.html',
+                  {
+                      'list_of_students': list_of_students
+                  })
+
+@login_required
+def iq_paid(request):
+
+    list_of_students = Infoquest_student.objects.filter(conf_tr_id=True)
+    if request.method == 'POST':
+        if 'absent_student' in request.POST:
+            got_student = request.POST.get('absent_student')
+            print(got_student)
+            instance = Infoquest_student.objects.get(id=got_student)
+            instance.conf_tr_id = False
+            instance.save()
+
+            return render(request, 'workshop/paid_workshop.html',
+                          {
+                              'list_of_students': list_of_students,
+                              'absent_student': instance
+                          })
+    return render(request, 'workshop/paid_workshop.html',
+                  {
+                      'list_of_students': list_of_students
+                  })

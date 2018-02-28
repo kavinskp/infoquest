@@ -245,10 +245,10 @@ def register(request):
         # print(vars(temp))
 
         content = ''
-        date = '27.08.2017 & 28.03.2017'
+        date = '23.03.2018 & 24.03.2018'
         if register_type == 'P':
             content = 'for Paper Exposit' \
-                      '\nSend your abstract with your team member details like name, email, mobile number, college (one abstract for a team) to mail: ppt@infoquestgct.com'
+                      '\nSend your abstract with your team member details like name, email, mobile number, college (one abstract for a team) to mail: infoquestgct18ppt@gmail.com'
             date = '27.03.2017'
 
         if register_type == 'E':

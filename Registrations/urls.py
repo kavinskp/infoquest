@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^IQ2k18/events/$', events, name = "iq_events"),
     url(r'^IQ2k18/sponsor/$', contact, name = "iq_contact"),
     url(r'^IQ2k18/payment/$', payment, name = "iq_payment"),
-    url(r'^IQ2k18/rseegistration/$', register, name = "iq_register"),
+    url(r'^IQ2k18/registration/$', register, name = "iq_register"),
     url(r'^IQ2k18/results/$', result, name = "iq_result"),
 
     url(r'^IQ2k18/single/$', single, name = "single"),
