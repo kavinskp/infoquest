@@ -1,0 +1,150 @@
+{% extends 'dashboard/dashboard_content.html' %}
+
+{% block title %}
+    Available Students
+{% endblock %}
+
+{% block rightPane %}
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-list"></i>
+                Student Paid for Workshop
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="x_content">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Student Name</th>
+                            <th>Email</th>
+                            <th>College</th>
+                            <th>Year</th>
+                            <th>Phone Number</th>
+                            <th>Trans Id</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for student in list_of_students %}
+                            <tr>
+                                <td align="center">{{ forloop.counter }}</td>
+                                <td>{{ student.name }}</td>
+                                <td>{{ student.email }}</td>
+                                <td>{{ student.college }}</td>
+                                <td align="center">
+                                    {% if student.year_of_study == '1' %}
+                                        I
+                                    {% endif %}
+                                    {% if student.year_of_study == '2' %}
+                                        II
+                                    {% endif %}
+                                    {% if student.year_of_study == '3' %}
+                                        III
+                                    {% endif %}
+                                    {% if student.year_of_study == '4' %}
+                                        IV
+                                    {% endif %}
+                                </td>
+                                <td align="center">{{ student.phone_number }}</td>
+                                <td>{{ student.transaction_id }}</td>
+                                <td><input class="btn1-sm btn-deep-orange" type="button" data-toggle="modal"
+                                           data-target="#myModal"
+                                           name="absent" id="{{ student.id }}"
+                                           value="Delete"></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="modal" id="myModal" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel1" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel1">Remove Confirmation</h4>
+                                </div>
+                                <div class="modal-body" id="modal_body">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn1 btn1-secondary" data-dismiss="modal">Close
+                                    </button>
+                                    <button name="mark_absent" type="button" class="btn1 btn1-danger">Revert Verify
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="dummy_form" method="POST">
+        {% csrf_token %}
+    </form>
+
+    <script type="text/javascript">
+
+    {% if absent_student %}
+            $(function () {
+                new PNotify({
+                    title: 'Success!',
+                    text: '{{ absent_student }}\'s Transaction is reverted',
+                    type: 'success',
+                    styling: 'bootstrap3',
+                    min_height: "20px",
+                    mobile: {'styling': true}
+                });
+            });
+        {% endif %}
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        $('document').ready(function () {
+            $('[name="absent"]').click(function () {
+                document.getElementById('modal_body').innerHTML = '<ul><li><h4>Are you sure to verify the transaction <strong>' +
+                    $(this).closest('tr').find('td:eq(6)').text() + '</strong></h4></li></ul>';
+                var $hiddenInput = $('<input/>', {type: 'hidden', value: this.id, name: 'absent_student'});
+                $hiddenInput.appendTo('#dummy_form');
+            });
+        });
+
+        $('document').ready(function () {
+            $('[name="mark_absent"]').click(function () {
+
+                var $hiddenInput = $('<input/>', {
+                    type: 'hidden',
+                    value: getCookie('csrftoken'),
+                    name: 'csrfmiddlewaretoken'
+                });
+                $hiddenInput.appendTo('#dummy_form');
+
+                $('#dummy_form').submit();
+
+            });
+        });
+    </script>
+
+{% endblock %}

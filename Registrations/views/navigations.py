@@ -8,7 +8,7 @@ from django.utils.crypto import random
 import hashlib
 
 from Registrations.models import Infoquest_student
-from Infoquest.models import queries, individual_round, shortlisted_candidates
+from iq.models import queries, individual_round, shortlisted_candidates
 from Registrations.send_mail import sendEmail_Infoquest, sendEmail_Registration_Infoquest
 from workshop.models import workshop_queries
 

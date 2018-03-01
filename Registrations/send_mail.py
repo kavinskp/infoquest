@@ -32,7 +32,7 @@ def sendEmail(datas):
               '\n\nClick the following link to confirm your registration ' + link + \
               '\n\n' \
               'Now InfoQuest on youtube!' \
-              '\nSubscribe our Youtube channel \'Infoquest Gct\' else, use link: https://www.youtube.com/channel/UCOqCQ818UlIGXtXFa-mSMhw' \
+              '\nSubscribe our Youtube channel \'CSEA Gct\' else, use link: https://www.youtube.com/channel/UCqSO7tar_Ll_meiH-TMakOg' \
               '\nStart Subscribing our channel now for more videos.' \
               '\n\n' \
               'And We glad to say our symposium InfoQuest \'18 on 23th & 24th March and we also expect your presence to InfoQuest \'18' \
@@ -40,10 +40,10 @@ def sendEmail(datas):
               '\n\nHave a great day!' \
               '\nFor more information, visit our website: https://infoquestgct.com' \
               '\nFacebook page - https://www.facebook.com/infoquest18/' \
-              '\nFeel free to ask queries \nMail us at: workshop@infoquestgct.com' \
+              '\nFeel free to ask queries \nMail us at: infoquestws@gmail.com' \
               '\n\n' \
               'Regards,\n' \
-              '\tInfoquest Team\n' \
+              '\tiq Team\n' \
               '\tCSEA - GCT\n'
 
     from_email = settings.EMAIL_HOST_USER
@@ -79,7 +79,7 @@ def sendEmail_Infoquest(datas):
               '\n\nClick the following link to confirm your registration ' + link + \
               '\n\n' \
               'Now InfoQuest on youtube!' \
-              '\nSubscribe our Youtube channel \'Infoquest Gct\' else, use link: https://www.youtube.com/channel/UCOqCQ818UlIGXtXFa-mSMhw' \
+              '\nSubscribe our Youtube channel \'CSEA Gct\' else, use link: https://www.youtube.com/channel/UCqSO7tar_Ll_meiH-TMakOg' \
               '\nStart Subscribing our channel now for more videos.' \
               '\n\n' \
               'And We glad to present a one day Workshop Data Science in Python on 12th March and we also expect your presence to our workshop' \
@@ -90,7 +90,7 @@ def sendEmail_Infoquest(datas):
               '\nFacebook page - https://www.facebook.com/infoquest18/' \
               '\n\n' \
               'Regards,\n' \
-              '\tInfoquest Team\n' \
+              '\tiq Team\n' \
               '\tCSEA - GCT\n'
     from_email = settings.EMAIL_HOST_USER
     send_mail(subject, message, from_email, [datas['email']], fail_silently=False)

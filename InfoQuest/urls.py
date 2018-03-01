@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^', include('Registrations.urls')),
     url(r'^dashboard/', include('dashboard.urls')),
     url(r'^', include('workshop.urls')),
-    url(r'^', include('Infoquest.urls')),
+    url(r'^', include('iq.urls')),
 ]
